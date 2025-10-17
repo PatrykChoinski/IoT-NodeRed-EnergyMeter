@@ -67,7 +67,8 @@
                 "default": "#0094CE",
                 "baseColor": "#0094CE",
                 "baseFont": "-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen-Sans,Ubuntu,Cantarell,Helvetica Neue,sans-serif",
-                "edited": false
+                "edited": true,
+                "reset": false
             },
             "darkTheme": {
                 "default": "#097479",
@@ -279,7 +280,7 @@
         "label": "units",
         "format": "{{value}}",
         "min": 0,
-        "max": "100",
+        "max": "400",
         "colors": [
             "#00b500",
             "#e6e600",
@@ -343,7 +344,7 @@
         "nodata": "",
         "dot": true,
         "ymin": "",
-        "ymax": "100",
+        "ymax": "400",
         "removeOlder": 1,
         "removeOlderPoints": "",
         "removeOlderUnit": "3600",
