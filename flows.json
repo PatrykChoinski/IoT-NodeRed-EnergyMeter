@@ -156,6 +156,13 @@
         }
     },
     {
+        "id": "60a216dac28b542d",
+        "type": "ui_tab",
+        "name": "Tab 2",
+        "icon": "dashboard",
+        "order": 2
+    },
+    {
         "id": "d9dc87ed006e3cf9",
         "type": "OpcUa-Client",
         "z": "16a9fef4be6ba735",
