@@ -1,0 +1,277 @@
+[
+    {
+        "id": "16a9fef4be6ba735",
+        "type": "tab",
+        "label": "SubMenu1",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "d9dc87ed006e3cf9",
+        "type": "OpcUa-Client",
+        "z": "16a9fef4be6ba735",
+        "endpoint": "573388758e5e0d0d",
+        "action": "subscribe",
+        "deadbandvalue": "",
+        "time": "1000",
+        "timeUnit": "ms",
+        "certificate": "n",
+        "localfile": "",
+        "localkeyfile": "",
+        "useTransport": false,
+        "maxChunkCount": "",
+        "maxMessageSize": "",
+        "receiveBufferSize": "",
+        "sendBufferSize": "",
+        "setstatusandtime": false,
+        "keepsessionalive": false,
+        "name": "Voltage",
+        "x": 560,
+        "y": 260,
+        "wires": [
+            [
+                "2c6ed7bb0750fc00"
+            ],
+            [],
+            []
+        ]
+    },
+    {
+        "id": "2a571b9aba1a2786",
+        "type": "inject",
+        "z": "16a9fef4be6ba735",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": true,
+        "onceDelay": 0.1,
+        "topic": "ns=4;s=|var|Delta/x86_64/RTE/SM/CNC/ TV+WV.Application.GVL.Voltage",
+        "payload": "",
+        "payloadType": "num",
+        "x": 210,
+        "y": 160,
+        "wires": [
+            [
+                "d9dc87ed006e3cf9",
+                "0f92b1718cb24d06"
+            ]
+        ]
+    },
+    {
+        "id": "2c6ed7bb0750fc00",
+        "type": "function",
+        "z": "16a9fef4be6ba735",
+        "name": "function 4",
+        "func": "msg.payload = Number(msg.payload.toFixed(2));\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 820,
+        "y": 260,
+        "wires": [
+            [
+                "26d0ca44749cf625",
+                "2ef6775e492b65c3",
+                "b52c2929081c4f04"
+            ]
+        ]
+    },
+    {
+        "id": "0f92b1718cb24d06",
+        "type": "OpcUa-Client",
+        "z": "16a9fef4be6ba735",
+        "endpoint": "573388758e5e0d0d",
+        "action": "connect",
+        "deadbandvalue": "",
+        "time": "",
+        "certificate": "n",
+        "localfile": "",
+        "localkeyfile": "",
+        "useTransport": false,
+        "maxChunkCount": "",
+        "maxMessageSize": "",
+        "receiveBufferSize": "",
+        "sendBufferSize": "",
+        "setstatusandtime": false,
+        "keepsessionalive": false,
+        "name": "OPC-UA Client",
+        "x": 580,
+        "y": 160,
+        "wires": [
+            [
+                "04dd01230c3f6bd9"
+            ],
+            [],
+            []
+        ]
+    },
+    {
+        "id": "26d0ca44749cf625",
+        "type": "ui_gauge",
+        "z": "16a9fef4be6ba735",
+        "name": "Voltage Gauge",
+        "group": "8333d5ac10a88c5b",
+        "order": 4,
+        "width": 6,
+        "height": 3,
+        "gtype": "donut",
+        "title": "Voltage",
+        "label": "units",
+        "format": "{{value}}",
+        "min": 0,
+        "max": "100",
+        "colors": [
+            "#00b500",
+            "#e6e600",
+            "#ca3838"
+        ],
+        "seg1": "",
+        "seg2": "",
+        "diff": false,
+        "className": "",
+        "x": 1040,
+        "y": 260,
+        "wires": []
+    },
+    {
+        "id": "2ef6775e492b65c3",
+        "type": "debug",
+        "z": "16a9fef4be6ba735",
+        "name": "debug 7",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1040,
+        "y": 300,
+        "wires": []
+    },
+    {
+        "id": "04dd01230c3f6bd9",
+        "type": "debug",
+        "z": "16a9fef4be6ba735",
+        "name": "Debug OPC Data",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 820,
+        "y": 160,
+        "wires": []
+    },
+    {
+        "id": "b52c2929081c4f04",
+        "type": "ui_chart",
+        "z": "16a9fef4be6ba735",
+        "name": "",
+        "group": "group1",
+        "order": 1,
+        "width": 0,
+        "height": 0,
+        "label": "Voltage Chart",
+        "chartType": "line",
+        "legend": "true",
+        "xformat": "HH:mm:ss",
+        "interpolate": "linear",
+        "nodata": "",
+        "dot": true,
+        "ymin": "",
+        "ymax": "100",
+        "removeOlder": 1,
+        "removeOlderPoints": "",
+        "removeOlderUnit": "3600",
+        "cutout": 0,
+        "useOneColor": false,
+        "useUTC": false,
+        "colors": [
+            "#1f77b4",
+            "#aec7e8",
+            "#ff7f0e",
+            "#2ca02c",
+            "#98df8a",
+            "#d62728",
+            "#ff9896",
+            "#9467bd",
+            "#c5b0d5"
+        ],
+        "outputs": 1,
+        "useDifferentColor": false,
+        "className": "",
+        "x": 1020,
+        "y": 360,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "573388758e5e0d0d",
+        "type": "OpcUa-Endpoint",
+        "endpoint": "opc.tcp://10.12.0.14:4840",
+        "secpol": "None",
+        "secmode": "None",
+        "none": true,
+        "login": false,
+        "usercert": false,
+        "usercertificate": "",
+        "userprivatekey": ""
+    },
+    {
+        "id": "8333d5ac10a88c5b",
+        "type": "ui_group",
+        "name": "SubBoard",
+        "tab": "ui-tab1",
+        "order": 2,
+        "disp": true,
+        "width": 6,
+        "collapse": false,
+        "className": ""
+    },
+    {
+        "id": "group1",
+        "type": "ui_group",
+        "name": "Storage Tanks",
+        "tab": "ui-tab1",
+        "order": 1,
+        "disp": true,
+        "width": 12,
+        "collapse": true,
+        "className": ""
+    },
+    {
+        "id": "ui-tab1",
+        "type": "ui_tab",
+        "name": "Scada",
+        "icon": "dashboard",
+        "disabled": false,
+        "hidden": false
+    },
+    {
+        "id": "bfd4d41e43b8b117",
+        "type": "global-config",
+        "env": [],
+        "modules": {
+            "node-red-contrib-opcua": "0.2.342",
+            "node-red-dashboard": "3.6.6"
+        }
+    }
+]
