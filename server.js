@@ -6,7 +6,7 @@ const app = express();
 const server = http.createServer(app);
 
 const settings = {
-    httpAdminRoot: "/IoT",
+    httpAdminRoot: "/",
     httpNodeRoot: "/api",
     userDir: "./.nodered",
     functionGlobalContext: {}
