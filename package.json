@@ -3,6 +3,7 @@
     "description": "Testowa Scada",
     "version": "0.0.1",
     "dependencies": {
+        "express": "^4.18.2",
         "node-red-contrib-opcua": "0.2.342",
         "node-red-dashboard": "3.6.6"
     },
