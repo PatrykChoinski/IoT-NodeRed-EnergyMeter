@@ -8,6 +8,57 @@
         "env": []
     },
     {
+        "id": "573388758e5e0d0d",
+        "type": "OpcUa-Endpoint",
+        "endpoint": "opc.tcp://10.12.0.14:4840",
+        "secpol": "None",
+        "secmode": "None",
+        "none": true,
+        "login": false,
+        "usercert": false,
+        "usercertificate": "",
+        "userprivatekey": ""
+    },
+    {
+        "id": "ui-tab1",
+        "type": "ui_tab",
+        "name": "Scada",
+        "icon": "dashboard",
+        "disabled": false,
+        "hidden": false
+    },
+    {
+        "id": "bfd4d41e43b8b117",
+        "type": "global-config",
+        "env": [],
+        "modules": {
+            "node-red-contrib-opcua": "0.2.342",
+            "node-red-dashboard": "3.6.6"
+        }
+    },
+    {
+        "id": "8333d5ac10a88c5b",
+        "type": "ui_group",
+        "name": "SubBoard",
+        "tab": "ui-tab1",
+        "order": 2,
+        "disp": true,
+        "width": 6,
+        "collapse": false,
+        "className": ""
+    },
+    {
+        "id": "group1",
+        "type": "ui_group",
+        "name": "Storage Tanks",
+        "tab": "ui-tab1",
+        "order": 1,
+        "disp": true,
+        "width": 12,
+        "collapse": true,
+        "className": ""
+    },
+    {
         "id": "d9dc87ed006e3cf9",
         "type": "OpcUa-Client",
         "z": "16a9fef4be6ba735",
@@ -222,56 +273,5 @@
         "wires": [
             []
         ]
-    },
-    {
-        "id": "573388758e5e0d0d",
-        "type": "OpcUa-Endpoint",
-        "endpoint": "opc.tcp://10.12.0.14:4840",
-        "secpol": "None",
-        "secmode": "None",
-        "none": true,
-        "login": false,
-        "usercert": false,
-        "usercertificate": "",
-        "userprivatekey": ""
-    },
-    {
-        "id": "8333d5ac10a88c5b",
-        "type": "ui_group",
-        "name": "SubBoard",
-        "tab": "ui-tab1",
-        "order": 2,
-        "disp": true,
-        "width": 6,
-        "collapse": false,
-        "className": ""
-    },
-    {
-        "id": "group1",
-        "type": "ui_group",
-        "name": "Storage Tanks",
-        "tab": "ui-tab1",
-        "order": 1,
-        "disp": true,
-        "width": 12,
-        "collapse": true,
-        "className": ""
-    },
-    {
-        "id": "ui-tab1",
-        "type": "ui_tab",
-        "name": "Scada",
-        "icon": "dashboard",
-        "disabled": false,
-        "hidden": false
-    },
-    {
-        "id": "bfd4d41e43b8b117",
-        "type": "global-config",
-        "env": [],
-        "modules": {
-            "node-red-contrib-opcua": "0.2.342",
-            "node-red-dashboard": "3.6.6"
-        }
     }
 ]
