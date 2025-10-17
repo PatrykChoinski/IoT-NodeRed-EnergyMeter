@@ -1,17 +1,27 @@
 {
-    "name": "Scada",
-    "description": "Testowa Scada",
+    "name": "red-project",
+    "description": "A Node-RED Project",
     "version": "0.0.1",
+    "private": true,
     "dependencies": {
-        "express": "^4.18.2",
-        "node-red": "4.1.0",
-        "node-red-contrib-opcua": "0.2.342",
-        "node-red-dashboard": "3.6.6"
+        "express": "~4.18.2",
+        "node-red": "^4.1.1",
+        "node-red-contrib-alarm": "~1.4.0",
+        "node-red-contrib-github-plus": "~0.3.1",
+        "node-red-contrib-opcua": "~0.2.342",
+        "node-red-contrib-web-worldmap": "~5.5.1",
+        "node-red-dashboard": "~3.6.6"
     },
-    "node-red": {
-        "settings": {
-            "flowFile": "flows.json",
-            "credentialsFile": "flows_cred.json"
-        }
-    }
+    "main": "settings.js",
+    "directories": {
+        "lib": "lib"
+    },
+    "devDependencies": {},
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "keywords": [],
+    "author": "",
+    "license": "ISC",
+    "type": "commonjs"
 }
