@@ -1,23 +1,17 @@
-const http = require('http');
-const express = require('express');
-const RED = require('node-red');
+const http = require("http");
+const RED = require("node-red");
 
-const app = express();
-const server = http.createServer(app);
-
+const server = http.createServer();
 const settings = {
-    httpAdminRoot: "/red",
-    httpNodeRoot: "/api",
+    httpAdminRoot: "/",
+    httpNodeRoot: "/",
     userDir: "./.nodered",
-    functionGlobalContext: {},
+    flowFile: "flows.json",
+    uiPort: process.env.PORT || 1880
 };
 
 RED.init(server, settings);
-app.use(settings.httpAdminRoot, RED.httpAdmin);
-app.use(settings.httpNodeRoot, RED.httpNode);
-
-server.listen(process.env.PORT || 3000, () => {
-    console.log("Server listening on port " + (process.env.PORT || 3000));
+server.listen(settings.uiPort, () => {
+    console.log(`Node-RED running on port ${settings.uiPort}`);
 });
-
 RED.start();
