@@ -39,3 +39,4 @@ jobs:
           app-name: 'IoT-NodeRed-EnergyMeter'
           slot-name: 'Production'
           package: .
+          startup-command: "npm start"
