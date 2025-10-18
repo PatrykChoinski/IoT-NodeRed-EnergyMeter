@@ -1,33 +1,24 @@
 {
-    "name": "red-project",
-    "description": "A Node-RED Project",
-    "version": "0.0.1",
-    "private": true,
-    "dependencies": {
-        "express": "~4.18.2",
-        "node-red": "^4.1.1",
-        "node-red-contrib-alarm": "~1.4.0",
-        "node-red-contrib-github-plus": "~0.3.1",
-        "node-red-contrib-opcua": "~0.2.342",
-        "node-red-contrib-web-worldmap": "~5.5.1",
-        "node-red-dashboard": "~3.6.6"
-    },
-    "main": "settings.js",
-    "directories": {
-        "lib": "lib"
-    },
-    "devDependencies": {},
-    "scripts": {
-        "start": "node server.js"
-    },
-    "keywords": [],
-    "author": "",
-    "license": "ISC",
-    "type": "commonjs",
-    "node-red": {
-        "settings": {
-            "flowFile": "flows.json",
-            "credentialsFile": "flows_cred.json"
-        }
-    }
+  "name": "red-project",
+  "version": "1.0.0",
+  "description": "Node-RED project for Azure App Service",
+  "private": true,
+  "engines": {
+    "node": ">=20.0.0"
+  },
+  "main": "server.js",
+  "dependencies": {
+    "express": "^4.18.2",
+    "node-red": "4.1.0",
+    "node-red-dashboard": "^3.6.6",
+    "node-red-contrib-alarm": "^1.4.0",
+    "node-red-contrib-github-plus": "^0.3.1",
+    "node-red-contrib-opcua": "^0.2.342",
+    "node-red-contrib-web-worldmap": "^5.5.1"
+  },
+  "scripts": {
+    "start": "node server.js"
+  },
+  "license": "ISC",
+  "type": "commonjs"
 }
