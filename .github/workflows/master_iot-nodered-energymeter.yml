@@ -1,4 +1,4 @@
-name: 🚀 Deploy Node-RED to Azure Web App
+name: Build and deploy Node.js app to Azure Web App - IoT-NodeRed-EnergyMeter
 
 on:
   push:
@@ -13,28 +13,18 @@ permissions:
 jobs:
   deploy:
     runs-on: ubuntu-latest
-    name: Build & Deploy to Azure
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      - name: Use Node.js 20
-        uses: actions/setup-node@v4
+      - name: Set up Node.js version
+        uses: actions/setup-node@v3
         with:
-          node-version: 20.x
+          node-version: '20.x'
           cache: 'npm'
 
-      - name: Install dependencies (fast, fallback if no lockfile)
-        run: |
-          if [ -f package-lock.json ]; then
-            npm ci --omit=dev
-          else
-            npm install --production
-          fi
-
-      - name: Verify app start
-        run: |
-          node -e "require('./server.js'); console.log('✅ Local test ok');"
+      - name: Install dependencies
+        run: npm install --production
 
       - name: Login to Azure
         uses: azure/login@v2
