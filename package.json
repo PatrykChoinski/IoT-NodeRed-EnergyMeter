@@ -7,13 +7,14 @@
         "node": ">=20.0.0"
     },
     "main": "server.js",
+    
     "dependencies": {
+        "node-red": "latest",
+        "node-red-dashboard": "latest",
+        "node-red-contrib-opcua": "latest",
         "express": "^4.18.2",
-        "node-red": "4.1.0",
-        "node-red-dashboard": "^3.6.6",
         "node-red-contrib-alarm": "^1.4.0",
         "node-red-contrib-github-plus": "^0.3.1",
-        "node-red-contrib-opcua": "^0.2.342",
         "node-red-contrib-web-worldmap": "^5.5.1"
     },
     "scripts": {
