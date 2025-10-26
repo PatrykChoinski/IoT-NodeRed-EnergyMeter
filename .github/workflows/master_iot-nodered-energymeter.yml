@@ -22,15 +22,11 @@ jobs:
         with:
           node-version: '20.x'
 
-      # Instalacja głównych zależności
+      # Instalacja głównych zależności + Node-RED nodes w katalogu root
       - name: Install dependencies
-        run: npm install
-
-      # 📦 Doinstalowanie Node-RED node'ów bezpośrednio do .nodered
-      - name: Install Node-RED nodes into .nodered
         run: |
-          mkdir -p .nodered
-          npm install --prefix .nodered node-red-dashboard node-red-contrib-opcua
+          npm install
+          npm install node-red-dashboard node-red-contrib-opcua
 
       # (opcjonalny build, zostaw jak jest)
       - name: Build app
