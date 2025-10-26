@@ -10,27 +10,21 @@ const settings = {
   httpNodeRoot: "/api",
   userDir: __dirname + "/.nodered",
   flowFile: "flows.json",
+  functionGlobalContext: {}, // wymagane przez dashboard
 };
-const path = require("path");
-const userSettings = require(path.join(__dirname, "settings.js"));
 
-userSettings.userDir = path.join(__dirname, ".nodered");
-userSettings.flowFile = "flows.json";
+RED.init(server, settings);
 
-RED.init(server, userSettings);
-
-// Statyczne pliki (jeśli chcesz dodać)
 app.use("/", express.static("public"));
-
-// Endpointy Node-RED
 app.use(settings.httpAdminRoot, RED.httpAdmin);
 app.use(settings.httpNodeRoot, RED.httpNode);
 
-// Start serwera
-server.listen(settings.uiPort, () => {
-    console.log(`Node-RED running on port ${settings.uiPort}`);
+// ⬇️ Najważniejsze poprawki
+const PORT = process.env.PORT || 1880;
+server.listen(PORT, () => {
+  console.log(`✅ Node-RED running on port ${PORT}`);
 });
 
 RED.start().then(() => {
-    console.log("Node-RED started successfully");
+  console.log("🚀 Node-RED started successfully");
 });

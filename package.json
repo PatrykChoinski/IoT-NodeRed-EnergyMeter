@@ -18,7 +18,8 @@
         "node-red-contrib-web-worldmap": "^5.5.1"
     },
     "scripts": {
-        "start": "node server.js"
+    "start": "node server.js",
+    "postinstall": "mkdir -p .nodered/node_modules && cp -r node_modules/* .nodered/node_modules/ || true"
     },
     "license": "ISC",
     "type": "commonjs",
