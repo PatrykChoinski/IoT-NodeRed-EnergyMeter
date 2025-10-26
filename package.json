@@ -7,7 +7,6 @@
         "node": ">=20.0.0"
     },
     "main": "server.js",
-    
     "dependencies": {
         "node-red": "latest",
         "node-red-dashboard": "latest",
@@ -18,15 +17,15 @@
         "node-red-contrib-web-worldmap": "^5.5.1"
     },
     "scripts": {
-    "start": "node server.js",
-    "postinstall": "mkdir -p .nodered/node_modules && cp -r node_modules/* .nodered/node_modules/ || true"
+        "start": "node server.js",
+        "postinstall": "mkdir -p .nodered/node_modules && cp -r node_modules/* .nodered/node_modules/ || true"
     },
     "license": "ISC",
     "type": "commonjs",
     "node-red": {
         "settings": {
-            "flowFile": ".nodered/flows.json",
-            "credentialsFile": ".nodered/flows_cred.json"
+            "flowFile": "flows.json",
+            "credentialsFile": "flows_cred.json"
         }
     }
 }
