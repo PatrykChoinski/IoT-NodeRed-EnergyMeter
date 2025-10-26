@@ -11,20 +11,12 @@ const settings = {
   userDir: __dirname + "/.nodered",
   flowFile: "flows.json",
 };
-const fs = require("fs");
 const path = require("path");
+const userSettings = require(path.join(__dirname, "settings.js"));
 
-// Załaduj oryginalny plik settings.js z katalogu .nodered
-const settingsPath = path.join(__dirname, ".nodered", "settings.js");
-const userSettings = require(settingsPath);
+userSettings.userDir = path.join(__dirname, ".nodered");
+userSettings.flowFile = "flows.json";
 
-// Wymuś poprawny userDir (jeśli nie ma)
-userSettings.userDir = userSettings.userDir || path.join(__dirname, ".nodered");
-
-// Ustawienie domyślnego portu
-userSettings.uiPort = process.env.PORT || 1880;
-
-// Inicjalizacja Node-RED z pełnymi ustawieniami
 RED.init(server, userSettings);
 
 // Statyczne pliki (jeśli chcesz dodać)
