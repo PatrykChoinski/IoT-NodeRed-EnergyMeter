@@ -6,17 +6,26 @@ const app = express();
 const server = http.createServer(app);
 
 const settings = {
-    httpAdminRoot: "/",
-    httpNodeRoot: "/",
-    userDir: process.env.NODE_RED_USER_DIR || "/home/site/wwwroot/.nodered",
-    flowFile: "flows.json",
-    credentialSecret: process.env.NODE_RED_SECRET || "changeme",
-    uiPort: process.env.PORT || 1880,
-    functionGlobalContext: {} // globalne konteksty jeśli potrzebne
+  httpAdminRoot: "/red",
+  httpNodeRoot: "/api",
+  userDir: __dirname + "/.nodered",
+  flowFile: "flows.json",
 };
+const fs = require("fs");
+const path = require("path");
 
-// Inicjalizacja Node-RED
-RED.init(server, settings);
+// Załaduj oryginalny plik settings.js z katalogu .nodered
+const settingsPath = path.join(__dirname, ".nodered", "settings.js");
+const userSettings = require(settingsPath);
+
+// Wymuś poprawny userDir (jeśli nie ma)
+userSettings.userDir = userSettings.userDir || path.join(__dirname, ".nodered");
+
+// Ustawienie domyślnego portu
+userSettings.uiPort = process.env.PORT || 1880;
+
+// Inicjalizacja Node-RED z pełnymi ustawieniami
+RED.init(server, userSettings);
 
 // Statyczne pliki (jeśli chcesz dodać)
 app.use("/", express.static("public"));
