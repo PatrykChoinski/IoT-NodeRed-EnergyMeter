@@ -31,3 +31,9 @@
   OpenVPN Connect to oficjalny klient OpenVPN, umożliwiający bezpieczne połączenia VPN.
 
 Aktywacja projektow w NodeRed: https://nodered.org/docs/user-guide/projects
+
+  editorTheme: {
+       projects: {
+           enabled: true
+       }
+   },
