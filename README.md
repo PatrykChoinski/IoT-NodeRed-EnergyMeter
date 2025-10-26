@@ -29,3 +29,5 @@
 - **OpenVPN Connect** – [Pobierz OpenVPN Connect](https://openvpn.net/client-connect-vpn-for-windows/)
 
   OpenVPN Connect to oficjalny klient OpenVPN, umożliwiający bezpieczne połączenia VPN.
+
+Aktywacja projektow w NodeRed: https://nodered.org/docs/user-guide/projects
