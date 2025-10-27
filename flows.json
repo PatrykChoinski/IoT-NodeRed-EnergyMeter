@@ -496,8 +496,35 @@
         "x": 460,
         "y": 360,
         "wires": [
+            [
+                "3b2b913b384f4224"
+            ],
             [],
-            [],
+            []
+        ]
+    },
+    {
+        "id": "3b2b913b384f4224",
+        "type": "ui_slider",
+        "z": "16a9fef4be6ba735",
+        "name": "",
+        "label": "slider",
+        "tooltip": "",
+        "group": "8333d5ac10a88c5b",
+        "order": 1,
+        "width": 0,
+        "height": 0,
+        "passthru": true,
+        "outs": "all",
+        "topic": "topic",
+        "topicType": "msg",
+        "min": 0,
+        "max": 10,
+        "step": 1,
+        "className": "",
+        "x": 770,
+        "y": 440,
+        "wires": [
             []
         ]
     }
