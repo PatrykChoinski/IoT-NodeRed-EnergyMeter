@@ -17,47 +17,37 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - name: Set up Node.js
+      - name: Set up Node.js version
         uses: actions/setup-node@v3
         with:
           node-version: '20.x'
 
-      # 🔹 Zainstaluj wszystkie zależności
+      # Instalacja głównych zależności + Node-RED nodes w katalogu root
       - name: Install dependencies
         run: |
-          npm ci
+          npm install
           npm install node-red-dashboard node-red-contrib-opcua
-          npm rebuild
 
-      # 🔹 Zweryfikuj obecność węzłów Node-RED
-      - name: Verify Node-RED modules
-        run: |
-          ls -l node_modules | grep node-red || true
-          node -e "console.log('✅ node-red-dashboard OK:', !!require.resolve('node-red-dashboard'))"
+      # (opcjonalny build, zostaw jak jest)
+      - name: Build app
+        run: npm run build --if-present
 
-      # 🔹 Spakuj aplikację (z node_modules) w ZIP
-      - name: Archive app for deployment
-        run: |
-          zip -r release.zip . -x "*.git*" -x "*.github*"
-
-      - name: Upload artifact
+      # Upload artefaktu do jobu deploy
+      - name: Upload artifact for deployment job
         uses: actions/upload-artifact@v4
         with:
           name: node-app
-          path: release.zip
+          path: .
 
   deploy:
     runs-on: ubuntu-latest
     needs: build
 
     steps:
-      - name: Download artifact
+      - name: Download artifact from build job
         uses: actions/download-artifact@v4
         with:
           name: node-app
-
-      - name: Unzip package
-        run: unzip -o release.zip -d .
 
       - name: Login to Azure
         uses: azure/login@v2
@@ -66,8 +56,9 @@ jobs:
           tenant-id: ${{ secrets.AZUREAPPSERVICE_TENANTID_CBCF5118567E4A80BEFFD0BFB26A26C3 }}
           subscription-id: ${{ secrets.AZUREAPPSERVICE_SUBSCRIPTIONID_5A9E875950664853B8367FC1DF5368A7 }}
 
-      # 🔹 Utwórz plik .deployment, żeby nadpisać domyślny build command
-      - name: Create custom .deployment file
-        run: |
-          echo "[config]" > .deployment
-          echo "SCM_DO_BUILD_DU_
+      - name: Deploy to Azure Web App
+        uses: azure/webapps-deploy@v3
+        with:
+          app-name: 'IoT-NodeRed-EnergyMeter'
+          slot-name: 'Production'
+          package: .
