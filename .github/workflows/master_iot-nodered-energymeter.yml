@@ -34,10 +34,11 @@ jobs:
       - name: Prepare artifact
         run: |
           mkdir -p deploy
-          cp -R * deploy/
+          rsync -av --progress . deploy --exclude deploy --exclude .git
           cd deploy
           tar -czf node_modules.tar.gz node_modules
           rm -rf node_modules
+
 
       - name: Upload artifact
         uses: actions/upload-artifact@v4
