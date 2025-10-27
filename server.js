@@ -8,10 +8,11 @@ const server = http.createServer(app);
 const settings = {
   httpAdminRoot: "/red",
   httpNodeRoot: "/api",
-  userDir: __dirname + "/.nodered",
+  userDir: __dirname, 
   flowFile: "flows.json",
-  functionGlobalContext: {}, // wymagane przez dashboard
+  functionGlobalContext: {},
 };
+
 
 RED.init(server, settings);
 
