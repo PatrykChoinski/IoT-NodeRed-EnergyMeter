@@ -32,8 +32,6 @@
 
 Aktywacja projektow w NodeRed: https://nodered.org/docs/user-guide/projects
 
-  editorTheme: {
-       projects: {
-           enabled: true
-       }
-   },
+Linki do buildów Node-Red: https://iot-nodered-energymeter-a0bgd5fhd3cwhsgj.polandcentral-01.azurewebsites.net/red  
+UI: https://iot-nodered-energymeter-a0bgd5fhd3cwhsgj.polandcentral-01.azurewebsites.net/api/ui
+
