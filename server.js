@@ -1,3 +1,9 @@
+// --- Node-RED Azure module path fix ---
+const path = require("path");
+process.env.NODE_PATH = path.join(__dirname, "node_modules");
+require("module").Module._initPaths();
+console.log("✅ NODE_PATH set to:", process.env.NODE_PATH);
+
 const http = require("http");
 const express = require("express");
 const RED = require("node-red");
@@ -8,10 +14,11 @@ const server = http.createServer(app);
 const settings = {
   httpAdminRoot: "/red",
   httpNodeRoot: "/api",
-  userDir: __dirname, 
+  userDir: __dirname,  // ✅ zostaw tak
   flowFile: "flows.json",
   functionGlobalContext: {},
 };
+
 
 
 RED.init(server, settings);
