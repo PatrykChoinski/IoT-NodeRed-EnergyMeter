@@ -156,6 +156,13 @@
         }
     },
     {
+        "id": "60a216dac28b542d",
+        "type": "ui_tab",
+        "name": "Tab 2",
+        "icon": "dashboard",
+        "order": 2
+    },
+    {
         "id": "d9dc87ed006e3cf9",
         "type": "OpcUa-Client",
         "z": "16a9fef4be6ba735",
@@ -220,7 +227,7 @@
         "type": "function",
         "z": "16a9fef4be6ba735",
         "name": "function 4",
-        "func": "msg.payload = Number(msg.payload.toFixed(2));\nreturn msg;",
+        "func": "msg.payload = Number(msg.payload.toFixed(2));;\nreturn msg;",
         "outputs": 1,
         "timeout": 0,
         "noerr": 0,
@@ -299,7 +306,7 @@
         "type": "debug",
         "z": "16a9fef4be6ba735",
         "name": "debug 7",
-        "active": false,
+        "active": true,
         "tosidebar": true,
         "console": false,
         "tostatus": false,
@@ -436,5 +443,89 @@
         "x": 840,
         "y": 600,
         "wires": []
+    },
+    {
+        "id": "244353510870c539",
+        "type": "inject",
+        "z": "16a9fef4be6ba735",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "ns=4;s=|var|Delta/x86_64/RTE/SM/CNC/ TV+WV.Application.GVL.ApparentPower",
+        "payload": "",
+        "payloadType": "date",
+        "x": 180,
+        "y": 300,
+        "wires": [
+            [
+                "e115b900a8519f9e"
+            ]
+        ]
+    },
+    {
+        "id": "e115b900a8519f9e",
+        "type": "OpcUa-Client",
+        "z": "16a9fef4be6ba735",
+        "endpoint": "573388758e5e0d0d",
+        "action": "subscribe",
+        "deadbandvalue": "",
+        "time": "1000",
+        "timeUnit": "ms",
+        "certificate": "n",
+        "localfile": "",
+        "localkeyfile": "",
+        "useTransport": false,
+        "maxChunkCount": "",
+        "maxMessageSize": "",
+        "receiveBufferSize": "",
+        "sendBufferSize": "",
+        "setstatusandtime": false,
+        "keepsessionalive": false,
+        "name": "Current",
+        "x": 460,
+        "y": 360,
+        "wires": [
+            [
+                "3b2b913b384f4224"
+            ],
+            [],
+            []
+        ]
+    },
+    {
+        "id": "3b2b913b384f4224",
+        "type": "ui_slider",
+        "z": "16a9fef4be6ba735",
+        "name": "",
+        "label": "slider",
+        "tooltip": "",
+        "group": "8333d5ac10a88c5b",
+        "order": 1,
+        "width": 0,
+        "height": 0,
+        "passthru": true,
+        "outs": "all",
+        "topic": "topic",
+        "topicType": "msg",
+        "min": 0,
+        "max": 10,
+        "step": 1,
+        "className": "",
+        "x": 770,
+        "y": 440,
+        "wires": [
+            []
+        ]
     }
 ]
