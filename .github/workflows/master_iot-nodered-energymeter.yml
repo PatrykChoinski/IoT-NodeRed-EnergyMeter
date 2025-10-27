@@ -66,10 +66,11 @@ jobs:
           tenant-id: ${{ secrets.AZUREAPPSERVICE_TENANTID_CBCF5118567E4A80BEFFD0BFB26A26C3 }}
           subscription-id: ${{ secrets.AZUREAPPSERVICE_SUBSCRIPTIONID_5A9E875950664853B8367FC1DF5368A7 }}
 
-      # 🔹 Wymuś pełny deploy ZIP-a z node_modules
       - name: Deploy to Azure Web App
         uses: azure/webapps-deploy@v3
         with:
           app-name: 'IoT-NodeRed-EnergyMeter'
           slot-name: 'Production'
           package: release.zip
+          startup-command: 'npm start'
+
