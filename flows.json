@@ -227,7 +227,7 @@
         "type": "function",
         "z": "16a9fef4be6ba735",
         "name": "function 4",
-        "func": "msg.payload = msg.payload;\nreturn msg;",
+        "func": "msg.payload = Number(msg.payload.toFixed(2));;\nreturn msg;",
         "outputs": 1,
         "timeout": 0,
         "noerr": 0,
