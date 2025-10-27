@@ -32,6 +32,9 @@
 
 Aktywacja projektow w NodeRed: https://nodered.org/docs/user-guide/projects
 
+Git For Windows
+https://git-scm.com/install/windows
+
 Linki do buildów Node-Red: https://iot-nodered-energymeter-a0bgd5fhd3cwhsgj.polandcentral-01.azurewebsites.net/red  
 UI: https://iot-nodered-energymeter-a0bgd5fhd3cwhsgj.polandcentral-01.azurewebsites.net/api/ui
 
