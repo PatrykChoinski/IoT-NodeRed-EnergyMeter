@@ -2,16 +2,7 @@ const path = require('path');
 
 module.exports = {
     // 🔐 Uwierzytelnianie do edytora Node-RED
-    adminAuth: {
-        type: "credentials",
-        users: [
-            {
-                username: "admin",
-                password: "$2b$08$XXXXXXXXXXXXXXXXXXXXXXXXX", // zahashowany bcrypt
-                permissions: "*"
-            }
-        ]
-    },
+    adminAuth: null,
 
     // 🌐 Port i katalog użytkownika
     uiPort: process.env.PORT || 1880,
