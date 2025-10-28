@@ -15,7 +15,7 @@ module.exports = {
 
     // 🌐 Port i katalog użytkownika
     uiPort: process.env.PORT || 1880,
-    userDir: process.env.NODE_RED_USER_DIR || "/home/site/wwwroot/.nodered",
+    userDir: process.env.NODE_RED_USER_DIR || "/home/site/wwwroot",
 
     // 🔄 Inne ustawienia
     flowFile: "flows.json",
