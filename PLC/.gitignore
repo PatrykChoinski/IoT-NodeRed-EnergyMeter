@@ -1,0 +1,21 @@
+##			 ##
+##  CODESYS IGNORE FILE  ##
+##			 ##
+
+
+*.backup
+*.tgs
+*.opt
+*.bootinfo
+*.bootinfo_guids
+# *.compileinfo   - plik potrzebny do przejścia w tryb online bez wgrywania programu pobranego z git
+*.xml
+*.simulation.bootinfo
+*.simulation.bootinfo_guids
+*.project.~u
+*.library.~u
+*.projectarchive
+*.cleaned
+*.tbf
+/Butelczarka.tgs.mpyl11ag.j0z
+/Butelczarka.tgs.ob0e15wq.h4l

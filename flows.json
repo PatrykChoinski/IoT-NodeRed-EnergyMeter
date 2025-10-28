@@ -448,7 +448,7 @@
         "id": "244353510870c539",
         "type": "inject",
         "z": "16a9fef4be6ba735",
-        "name": "",
+        "name": "Inject Current",
         "props": [
             {
                 "p": "payload"
@@ -460,12 +460,12 @@
         ],
         "repeat": "",
         "crontab": "",
-        "once": false,
+        "once": true,
         "onceDelay": 0.1,
-        "topic": "ns=4;s=|var|Delta/x86_64/RTE/SM/CNC/ TV+WV.Application.GVL.ApparentPower",
+        "topic": "ns=4;s=|var|Delta/x86_64/RTE/SM/CNC/ TV+WV.Application.GVL.Current",
         "payload": "",
         "payloadType": "date",
-        "x": 180,
+        "x": 200,
         "y": 300,
         "wires": [
             [
@@ -497,35 +497,51 @@
         "y": 360,
         "wires": [
             [
-                "3b2b913b384f4224"
+                "885b4ab53277fd09"
             ],
             [],
             []
         ]
     },
     {
-        "id": "3b2b913b384f4224",
-        "type": "ui_slider",
+        "id": "9b1a244cbe9ee2f6",
+        "type": "ui_text",
         "z": "16a9fef4be6ba735",
-        "name": "",
-        "label": "slider",
-        "tooltip": "",
-        "group": "8333d5ac10a88c5b",
+        "group": "group1",
         "order": 1,
         "width": 0,
         "height": 0,
-        "passthru": true,
-        "outs": "all",
-        "topic": "topic",
-        "topicType": "msg",
-        "min": 0,
-        "max": 10,
-        "step": 1,
+        "name": "",
+        "label": "Current:",
+        "format": "{{msg.payload}}",
+        "layout": "row-left",
         "className": "",
-        "x": 770,
-        "y": 440,
+        "style": false,
+        "font": "",
+        "fontSize": 16,
+        "color": "#000000",
+        "x": 820,
+        "y": 420,
+        "wires": []
+    },
+    {
+        "id": "885b4ab53277fd09",
+        "type": "function",
+        "z": "16a9fef4be6ba735",
+        "name": "function 2",
+        "func": "msg.payload = Number(msg.payload.toFixed(2));;\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 620,
+        "y": 380,
         "wires": [
-            []
+            [
+                "9b1a244cbe9ee2f6"
+            ]
         ]
     }
 ]

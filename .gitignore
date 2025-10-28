@@ -137,3 +137,23 @@ dist
 # Vite logs files
 vite.config.js.timestamp-*
 vite.config.ts.timestamp-*
+
+##			 ##
+##  CODESYS IGNORE FILE  ##
+##			 ##
+
+
+*.backup
+*.tgs
+*.opt
+*.bootinfo
+*.bootinfo_guids
+# *.compileinfo   - plik potrzebny do przejścia w tryb online bez wgrywania programu pobranego z git
+*.xml
+*.simulation.bootinfo
+*.simulation.bootinfo_guids
+*.project.~u
+*.library.~u
+*.projectarchive
+*.cleaned
+*.tbf
