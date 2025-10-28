@@ -31,8 +31,8 @@ module.exports = {
     functionGlobalContext: {},
 
     // 🧩 Dodatkowe węzły
-    nodesDir: path.join(process.env.NODE_RED_USER_DIR || "/home/site/wwwroot/.nodered", "node_modules"),
-
+    //nodesDir: path.join(process.env.NODE_RED_USER_DIR || "/home/site/wwwroot/.nodered", "node_modules"),
+    nodesDir: path.join(process.env.NODE_RED_USER_DIR || "/home/site/wwwroot", "node_modules"),
     // 🔧 Ustawienie NODE_PATH w runtime
     runtimeMaxWorkers: 1, // opcjonalne, bezpieczne dla App Service
 };
