@@ -6,11 +6,35 @@
     <ProjectInfo name="MiernikEnergii" devicename="Controller_1" appname="Application" />
   </Header>
   <TypeList>
+    <TypeSimple name="T_BYTE" size="1" swapsize="1" typeclass="Byte" iecname="BYTE" />
     <TypeSimple name="T_REAL" size="4" swapsize="4" typeclass="Real" iecname="REAL" />
+    <TypeSimple name="T_WORD" size="2" swapsize="2" typeclass="Word" iecname="WORD" />
   </TypeList>
   <NodeList>
     <Node name="Application">
       <Node name="GVL">
+        <Node name="ActivePower" type="T_REAL" access="ReadWrite" />
+        <Node name="ApparentPower" type="T_REAL" access="ReadWrite" />
+        <Node name="Current" type="T_REAL" access="ReadWrite" />
+        <Node name="Frequency" type="T_REAL" access="ReadWrite" />
+        <Node name="MaxCurrent" type="T_REAL" access="ReadWrite" />
+        <Node name="MaxCurrentDay" type="T_WORD" access="ReadWrite" />
+        <Node name="MaxCurrentHour" type="T_BYTE" access="ReadWrite" />
+        <Node name="MaxCurrentMinute" type="T_BYTE" access="ReadWrite" />
+        <Node name="MaxCurrentMonth" type="T_BYTE" access="ReadWrite" />
+        <Node name="MaxCurrentSecond" type="T_WORD" access="ReadWrite" />
+        <Node name="MaxCurrentYear" type="T_BYTE" access="ReadWrite" />
+        <Node name="MaxVoltage" type="T_REAL" access="ReadWrite" />
+        <Node name="MaxVoltageDay" type="T_WORD" access="ReadWrite" />
+        <Node name="MaxVoltageHour" type="T_BYTE" access="ReadWrite" />
+        <Node name="MaxVoltageMinute" type="T_BYTE" access="ReadWrite" />
+        <Node name="MaxVoltageMonth" type="T_BYTE" access="ReadWrite" />
+        <Node name="MaxVoltageSecond" type="T_WORD" access="ReadWrite" />
+        <Node name="MaxVoltageYear" type="T_BYTE" access="ReadWrite" />
+        <Node name="PowerFactor" type="T_REAL" access="ReadWrite" />
+        <Node name="ReactivePower" type="T_REAL" access="ReadWrite" />
+        <Node name="THDCA" type="T_REAL" access="ReadWrite" />
+        <Node name="THDVA" type="T_REAL" access="ReadWrite" />
         <Node name="Voltage" type="T_REAL" access="ReadWrite" />
       </Node>
     </Node>
