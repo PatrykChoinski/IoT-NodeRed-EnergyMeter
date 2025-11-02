@@ -927,5 +927,48 @@
                 "e441f4b54af8f512"
             ]
         ]
+    },
+    {
+        "id": "a53f6df38ed7043a",
+        "type": "ui_digital_clock",
+        "z": "16a9fef4be6ba735",
+        "name": "Clock",
+        "group": "group1",
+        "order": 1,
+        "width": "9",
+        "height": "3",
+        "x": 750,
+        "y": 1160,
+        "wires": []
+    },
+    {
+        "id": "021768ec5f2763cf",
+        "type": "inject",
+        "z": "16a9fef4be6ba735",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "v": "iso",
+                "vt": "date"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "iso",
+        "payloadType": "date",
+        "x": 400,
+        "y": 1160,
+        "wires": [
+            [
+                "a53f6df38ed7043a"
+            ]
+        ]
     }
 ]
