@@ -505,7 +505,7 @@
         "order": 1,
         "width": 0,
         "height": 0,
-        "gtype": "gage",
+        "gtype": "compass",
         "title": "Current gauge",
         "label": "units",
         "format": "{{value}}",
