@@ -559,7 +559,7 @@
         "crontab": "",
         "once": false,
         "onceDelay": 0.1,
-        "topic": "ns=4;s=|var|Delta/x86_64/RTE/SM/CNC/ TV+WV.Application.GVL.ApparentPower",
+        "topic": "ns=4;s=|var|Delta/x86_64/RTE/SM/CNC/ TV+WV.Application.GVL.Current",
         "payload": "",
         "payloadType": "num",
         "x": 250,
@@ -621,8 +621,8 @@
         "sendBufferSize": 8192,
         "setstatusandtime": false,
         "keepsessionalive": false,
-        "name": "",
-        "x": 420,
+        "name": "Power",
+        "x": 390,
         "y": 660,
         "wires": [
             [
