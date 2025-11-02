@@ -794,8 +794,8 @@
         "sendBufferSize": 8192,
         "setstatusandtime": false,
         "keepsessionalive": false,
-        "name": "",
-        "x": 360,
+        "name": "Frequency",
+        "x": 350,
         "y": 820,
         "wires": [
             [
