@@ -466,7 +466,7 @@
         "keepsessionalive": false,
         "name": "Current",
         "x": 460,
-        "y": 360,
+        "y": 400,
         "wires": [
             [
                 "41fd305fa894079a"
@@ -488,7 +488,7 @@
         "finalize": "",
         "libs": [],
         "x": 700,
-        "y": 400,
+        "y": 440,
         "wires": [
             [
                 "ef867810faea8f99",
@@ -561,8 +561,8 @@
         "onceDelay": 0.1,
         "topic": "ns=4;s=|var|Delta/x86_64/RTE/SM/CNC/ TV+WV.Application.GVL.ApparentPower",
         "payload": "",
-        "payloadType": "date",
-        "x": 200,
+        "payloadType": "num",
+        "x": 190,
         "y": 340,
         "wires": [
             [
