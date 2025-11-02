@@ -506,7 +506,7 @@
         "width": "5",
         "height": "5",
         "gtype": "donut",
-        "title": "Current gauge",
+        "title": "Current",
         "label": "A",
         "format": "{{value}}",
         "min": 0,
