@@ -62,7 +62,7 @@
         "id": "371d530559606b3d",
         "type": "ui_base",
         "theme": {
-            "name": "theme-light",
+            "name": "theme-dark",
             "lightTheme": {
                 "default": "#0094CE",
                 "baseColor": "#0094CE",
@@ -74,7 +74,8 @@
                 "default": "#097479",
                 "baseColor": "#097479",
                 "baseFont": "-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen-Sans,Ubuntu,Cantarell,Helvetica Neue,sans-serif",
-                "edited": false
+                "edited": true,
+                "reset": false
             },
             "customTheme": {
                 "name": "Untitled Theme 1",
@@ -84,44 +85,44 @@
             },
             "themeState": {
                 "base-color": {
-                    "default": "#0094CE",
-                    "value": "#0094CE",
+                    "default": "#097479",
+                    "value": "#097479",
                     "edited": false
                 },
                 "page-titlebar-backgroundColor": {
-                    "value": "#0094CE",
+                    "value": "#097479",
                     "edited": false
                 },
                 "page-backgroundColor": {
-                    "value": "#fafafa",
-                    "edited": false
-                },
-                "page-sidebar-backgroundColor": {
-                    "value": "#ffffff",
-                    "edited": false
-                },
-                "group-textColor": {
-                    "value": "#1bbfff",
-                    "edited": false
-                },
-                "group-borderColor": {
-                    "value": "#ffffff",
-                    "edited": false
-                },
-                "group-backgroundColor": {
-                    "value": "#ffffff",
-                    "edited": false
-                },
-                "widget-textColor": {
                     "value": "#111111",
                     "edited": false
                 },
+                "page-sidebar-backgroundColor": {
+                    "value": "#333333",
+                    "edited": false
+                },
+                "group-textColor": {
+                    "value": "#0eb8c0",
+                    "edited": false
+                },
+                "group-borderColor": {
+                    "value": "#555555",
+                    "edited": false
+                },
+                "group-backgroundColor": {
+                    "value": "#333333",
+                    "edited": false
+                },
+                "widget-textColor": {
+                    "value": "#eeeeee",
+                    "edited": false
+                },
                 "widget-backgroundColor": {
-                    "value": "#0094ce",
+                    "value": "#097479",
                     "edited": false
                 },
                 "widget-borderColor": {
-                    "value": "#ffffff",
+                    "value": "#333333",
                     "edited": false
                 },
                 "base-font": {
@@ -839,7 +840,7 @@
         "cancel": "",
         "raw": false,
         "className": "",
-        "topic": "INFORMATION",
+        "topic": "Max Voltage on this day",
         "name": "Max Voltage",
         "x": 870,
         "y": 1020,
@@ -925,6 +926,79 @@
             [
                 "e441f4b54af8f512"
             ]
+        ]
+    },
+    {
+        "id": "64ccb26c32df6132",
+        "type": "inject",
+        "z": "16a9fef4be6ba735",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": true,
+        "onceDelay": "0.1",
+        "topic": "",
+        "payload": "iso",
+        "payloadType": "date",
+        "x": 430,
+        "y": 1140,
+        "wires": [
+            [
+                "9f908dd36c9536b8"
+            ]
+        ]
+    },
+    {
+        "id": "9f908dd36c9536b8",
+        "type": "function",
+        "z": "16a9fef4be6ba735",
+        "name": "function 7",
+        "func": "let now = new Date();\nmsg.payload = now.toLocaleTimeString('pl-PL', {\n    timeZone: 'Europe/Warsaw',\n    hour12: false\n});\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 660,
+        "y": 1160,
+        "wires": [
+            [
+                "5625d5362353f9c1"
+            ]
+        ]
+    },
+    {
+        "id": "5625d5362353f9c1",
+        "type": "ui_text_input",
+        "z": "16a9fef4be6ba735",
+        "name": "",
+        "label": "",
+        "tooltip": "",
+        "group": "group1",
+        "order": 4,
+        "width": "5",
+        "height": "2",
+        "passthru": false,
+        "mode": "text",
+        "delay": 300,
+        "topic": "topic",
+        "sendOnBlur": true,
+        "className": "",
+        "topicType": "msg",
+        "x": 860,
+        "y": 1160,
+        "wires": [
+            []
         ]
     }
 ]
