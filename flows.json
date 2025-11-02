@@ -509,7 +509,7 @@
         "title": "Current",
         "label": "A",
         "format": "{{value}}",
-        "min": 0,
+        "min": "0.001",
         "max": "0.1",
         "colors": [
             "#00b500",
