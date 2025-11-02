@@ -942,17 +942,28 @@
         "wires": []
     },
     {
-        "id": "7569ebccdd1e5b5d",
-        "type": "http in",
+        "id": "64ccb26c32df6132",
+        "type": "inject",
         "z": "16a9fef4be6ba735",
         "name": "",
-        "url": "https://time.is/pl/Poland",
-        "method": "get",
-        "upload": false,
-        "skipBodyParsing": false,
-        "swaggerDoc": "",
-        "x": 460,
-        "y": 1160,
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": true,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "iso",
+        "payloadType": "date",
+        "x": 430,
+        "y": 1140,
         "wires": [
             [
                 "a53f6df38ed7043a"
