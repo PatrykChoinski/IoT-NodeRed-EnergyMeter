@@ -500,7 +500,7 @@
         "id": "ef867810faea8f99",
         "type": "ui_gauge",
         "z": "16a9fef4be6ba735",
-        "name": "",
+        "name": "Current",
         "group": "8333d5ac10a88c5b",
         "order": 1,
         "width": "5",
@@ -520,7 +520,7 @@
         "seg2": "",
         "diff": false,
         "className": "",
-        "x": 940,
+        "x": 920,
         "y": 420,
         "wires": []
     },
