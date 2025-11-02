@@ -973,29 +973,32 @@
         "y": 1160,
         "wires": [
             [
-                "d3d2920a0e6163e4"
+                "5625d5362353f9c1"
             ]
         ]
     },
     {
-        "id": "d3d2920a0e6163e4",
-        "type": "ui_text",
+        "id": "5625d5362353f9c1",
+        "type": "ui_text_input",
         "z": "16a9fef4be6ba735",
-        "group": "group1",
-        "order": 1,
+        "name": "",
+        "label": "",
+        "tooltip": "",
+        "group": "8333d5ac10a88c5b",
+        "order": 4,
         "width": 0,
         "height": 0,
-        "name": "",
-        "label": "Godzina",
-        "format": "{{msg.payload}}",
-        "layout": "row-center",
+        "passthru": true,
+        "mode": "text",
+        "delay": 300,
+        "topic": "topic",
+        "sendOnBlur": true,
         "className": "",
-        "style": false,
-        "font": "",
-        "fontSize": 16,
-        "color": "#000000",
-        "x": 880,
-        "y": 1180,
-        "wires": []
+        "topicType": "msg",
+        "x": 860,
+        "y": 1160,
+        "wires": [
+            []
+        ]
     }
 ]
