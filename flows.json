@@ -480,7 +480,7 @@
         "type": "function",
         "z": "16a9fef4be6ba735",
         "name": "function 2",
-        "func": "msg.payload = Number(msg.payload.toFixed(2));;\nreturn msg;",
+        "func": "msg.payload = Number(msg.payload.toFixed(3));;\nreturn msg;",
         "outputs": 1,
         "timeout": 0,
         "noerr": 0,
@@ -510,7 +510,7 @@
         "label": "A",
         "format": "{{value}}",
         "min": "0.001",
-        "max": "0.1",
+        "max": "0.5",
         "colors": [
             "#00b500",
             "#e6e600",
