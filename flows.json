@@ -537,7 +537,7 @@
         "label": "units",
         "format": "{{value}}",
         "min": 0,
-        "max": 10,
+        "max": "100",
         "colors": [
             "#00b500",
             "#e6e600",
