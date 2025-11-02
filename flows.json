@@ -839,7 +839,7 @@
         "cancel": "",
         "raw": false,
         "className": "",
-        "topic": "INFORMATION",
+        "topic": "Max Voltage on this day",
         "name": "Max Voltage",
         "x": 870,
         "y": 1020,
