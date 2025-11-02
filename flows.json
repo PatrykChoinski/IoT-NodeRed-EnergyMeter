@@ -697,5 +697,133 @@
         "x": 860,
         "y": 780,
         "wires": []
+    },
+    {
+        "id": "f31905c670fb7607",
+        "type": "inject",
+        "z": "16a9fef4be6ba735",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": true,
+        "onceDelay": 0.1,
+        "topic": "ns=4;s=|var|Delta/x86_64/RTE/SM/CNC/ TV+WV.Application.GVL.Frequency",
+        "payload": "",
+        "payloadType": "num",
+        "x": 190,
+        "y": 800,
+        "wires": [
+            [
+                "2827f840b85abaa3"
+            ]
+        ]
+    },
+    {
+        "id": "c88dc6b11395d081",
+        "type": "ui_gauge",
+        "z": "16a9fef4be6ba735",
+        "name": "",
+        "group": "8333d5ac10a88c5b",
+        "order": 3,
+        "width": 0,
+        "height": 0,
+        "gtype": "donut",
+        "title": "Frequency",
+        "label": "units",
+        "format": "{{value}}",
+        "min": 0,
+        "max": "100",
+        "colors": [
+            "#00b500",
+            "#e6e600",
+            "#ca3838"
+        ],
+        "seg1": "",
+        "seg2": "",
+        "diff": false,
+        "className": "",
+        "x": 850,
+        "y": 860,
+        "wires": []
+    },
+    {
+        "id": "661bb6d67bc1414c",
+        "type": "debug",
+        "z": "16a9fef4be6ba735",
+        "name": "debug 4",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 840,
+        "y": 920,
+        "wires": []
+    },
+    {
+        "id": "2827f840b85abaa3",
+        "type": "OpcUa-Client",
+        "z": "16a9fef4be6ba735",
+        "endpoint": "573388758e5e0d0d",
+        "action": "subscribe",
+        "deadbandtype": "a",
+        "deadbandvalue": 1,
+        "time": "100",
+        "timeUnit": "ms",
+        "certificate": "n",
+        "localfile": "",
+        "localkeyfile": "",
+        "securitymode": "None",
+        "securitypolicy": "None",
+        "useTransport": false,
+        "maxChunkCount": 1,
+        "maxMessageSize": 8192,
+        "receiveBufferSize": 8192,
+        "sendBufferSize": 8192,
+        "setstatusandtime": false,
+        "keepsessionalive": false,
+        "name": "",
+        "x": 360,
+        "y": 820,
+        "wires": [
+            [
+                "739eb86b1695902c"
+            ],
+            [],
+            []
+        ]
+    },
+    {
+        "id": "739eb86b1695902c",
+        "type": "function",
+        "z": "16a9fef4be6ba735",
+        "name": "function 5",
+        "func": "msg.payload = Number(msg.payload.toFixed(3));;\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 600,
+        "y": 860,
+        "wires": [
+            [
+                "c88dc6b11395d081",
+                "661bb6d67bc1414c"
+            ]
+        ]
     }
 ]
