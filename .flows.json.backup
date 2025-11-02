@@ -43,7 +43,7 @@
         "tab": "ui-tab1",
         "order": 2,
         "disp": true,
-        "width": 6,
+        "width": "5",
         "collapse": false,
         "className": ""
     },
@@ -280,11 +280,11 @@
         "name": "Voltage Gauge",
         "group": "8333d5ac10a88c5b",
         "order": 4,
-        "width": 6,
-        "height": 3,
+        "width": "5",
+        "height": "5",
         "gtype": "donut",
         "title": "Voltage",
-        "label": "units",
+        "label": "V",
         "format": "{{value}}",
         "min": 0,
         "max": "400",
@@ -310,7 +310,8 @@
         "tosidebar": true,
         "console": false,
         "tostatus": false,
-        "complete": "false",
+        "complete": "payload",
+        "targetType": "msg",
         "statusVal": "",
         "statusType": "auto",
         "x": 1040,
@@ -445,35 +446,6 @@
         "wires": []
     },
     {
-        "id": "244353510870c539",
-        "type": "inject",
-        "z": "16a9fef4be6ba735",
-        "name": "",
-        "props": [
-            {
-                "p": "payload"
-            },
-            {
-                "p": "topic",
-                "vt": "str"
-            }
-        ],
-        "repeat": "",
-        "crontab": "",
-        "once": false,
-        "onceDelay": 0.1,
-        "topic": "ns=4;s=|var|Delta/x86_64/RTE/SM/CNC/ TV+WV.Application.GVL.ApparentPower",
-        "payload": "",
-        "payloadType": "date",
-        "x": 180,
-        "y": 300,
-        "wires": [
-            [
-                "e115b900a8519f9e"
-            ]
-        ]
-    },
-    {
         "id": "e115b900a8519f9e",
         "type": "OpcUa-Client",
         "z": "16a9fef4be6ba735",
@@ -494,38 +466,236 @@
         "keepsessionalive": false,
         "name": "Current",
         "x": 460,
-        "y": 360,
+        "y": 400,
         "wires": [
             [
-                "3b2b913b384f4224"
+                "41fd305fa894079a"
             ],
             [],
             []
         ]
     },
     {
-        "id": "3b2b913b384f4224",
-        "type": "ui_slider",
+        "id": "41fd305fa894079a",
+        "type": "function",
         "z": "16a9fef4be6ba735",
-        "name": "",
-        "label": "slider",
-        "tooltip": "",
-        "group": "8333d5ac10a88c5b",
-        "order": 1,
-        "width": 0,
-        "height": 0,
-        "passthru": true,
-        "outs": "all",
-        "topic": "topic",
-        "topicType": "msg",
-        "min": 0,
-        "max": 10,
-        "step": 1,
-        "className": "",
-        "x": 770,
+        "name": "function 2",
+        "func": "msg.payload = Number(msg.payload.toFixed(2));;\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 700,
         "y": 440,
         "wires": [
+            [
+                "ef867810faea8f99",
+                "54883d5a01a66e2a"
+            ]
+        ]
+    },
+    {
+        "id": "ef867810faea8f99",
+        "type": "ui_gauge",
+        "z": "16a9fef4be6ba735",
+        "name": "Current",
+        "group": "8333d5ac10a88c5b",
+        "order": 1,
+        "width": "5",
+        "height": "5",
+        "gtype": "donut",
+        "title": "Current",
+        "label": "A",
+        "format": "{{value}}",
+        "min": "0.001",
+        "max": "0.1",
+        "colors": [
+            "#00b500",
+            "#e6e600",
+            "#ca3838"
+        ],
+        "seg1": "",
+        "seg2": "",
+        "diff": false,
+        "className": "",
+        "x": 920,
+        "y": 420,
+        "wires": []
+    },
+    {
+        "id": "54883d5a01a66e2a",
+        "type": "debug",
+        "z": "16a9fef4be6ba735",
+        "name": "debug 2",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 920,
+        "y": 460,
+        "wires": []
+    },
+    {
+        "id": "ae53100e3ceacf9c",
+        "type": "inject",
+        "z": "16a9fef4be6ba735",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": true,
+        "onceDelay": 0.1,
+        "topic": "ns=4;s=|var|Delta/x86_64/RTE/SM/CNC/ TV+WV.Application.GVL.Current",
+        "payload": "",
+        "payloadType": "num",
+        "x": 250,
+        "y": 380,
+        "wires": [
+            [
+                "e115b900a8519f9e"
+            ]
+        ]
+    },
+    {
+        "id": "9a84fef37dd95afc",
+        "type": "inject",
+        "z": "16a9fef4be6ba735",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": true,
+        "onceDelay": 0.1,
+        "topic": "ns=4;s=|var|Delta/x86_64/RTE/SM/CNC/ TV+WV.Application.GVL.ReactivePower",
+        "payload": "",
+        "payloadType": "num",
+        "x": 210,
+        "y": 640,
+        "wires": [
+            [
+                "bca95388d06c37fe"
+            ]
+        ]
+    },
+    {
+        "id": "bca95388d06c37fe",
+        "type": "OpcUa-Client",
+        "z": "16a9fef4be6ba735",
+        "endpoint": "573388758e5e0d0d",
+        "action": "subscribe",
+        "deadbandtype": "a",
+        "deadbandvalue": 1,
+        "time": "100",
+        "timeUnit": "ms",
+        "certificate": "n",
+        "localfile": "",
+        "localkeyfile": "",
+        "securitymode": "None",
+        "securitypolicy": "None",
+        "useTransport": false,
+        "maxChunkCount": 1,
+        "maxMessageSize": 8192,
+        "receiveBufferSize": 8192,
+        "sendBufferSize": 8192,
+        "setstatusandtime": false,
+        "keepsessionalive": false,
+        "name": "Power",
+        "x": 390,
+        "y": 660,
+        "wires": [
+            [
+                "df77873a82423dec"
+            ],
+            [],
             []
         ]
+    },
+    {
+        "id": "df77873a82423dec",
+        "type": "function",
+        "z": "16a9fef4be6ba735",
+        "name": "function 3",
+        "func": "msg.payload = Number(msg.payload.toFixed(4));;\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 660,
+        "y": 680,
+        "wires": [
+            [
+                "1c0bad4b6e16e191",
+                "c8d785aa1e9a5ee0"
+            ]
+        ]
+    },
+    {
+        "id": "1c0bad4b6e16e191",
+        "type": "ui_gauge",
+        "z": "16a9fef4be6ba735",
+        "name": "Power",
+        "group": "8333d5ac10a88c5b",
+        "order": 2,
+        "width": "5",
+        "height": "5",
+        "gtype": "donut",
+        "title": "Power",
+        "label": "W",
+        "format": "{{value}}",
+        "min": "0.0001",
+        "max": "0.1",
+        "colors": [
+            "#00b500",
+            "#e6e600",
+            "#ca3838"
+        ],
+        "seg1": "",
+        "seg2": "",
+        "diff": false,
+        "className": "",
+        "x": 870,
+        "y": 700,
+        "wires": []
+    },
+    {
+        "id": "c8d785aa1e9a5ee0",
+        "type": "debug",
+        "z": "16a9fef4be6ba735",
+        "name": "debug 3",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 860,
+        "y": 780,
+        "wires": []
     }
 ]
