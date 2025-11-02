@@ -825,5 +825,106 @@
                 "661bb6d67bc1414c"
             ]
         ]
+    },
+    {
+        "id": "e441f4b54af8f512",
+        "type": "ui_toast",
+        "z": "16a9fef4be6ba735",
+        "position": "bottom left",
+        "displayTime": "3",
+        "highlight": "",
+        "sendall": true,
+        "outputs": 0,
+        "ok": "OK",
+        "cancel": "",
+        "raw": false,
+        "className": "",
+        "topic": "",
+        "name": "Max Voltage",
+        "x": 870,
+        "y": 1020,
+        "wires": []
+    },
+    {
+        "id": "e7a0f568b7fcf805",
+        "type": "inject",
+        "z": "16a9fef4be6ba735",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": true,
+        "onceDelay": 0.1,
+        "topic": "ns=4;s=|var|Delta/x86_64/RTE/SM/CNC/ TV+WV.Application.GVL.MaxVoltage",
+        "payload": "",
+        "payloadType": "num",
+        "x": 170,
+        "y": 960,
+        "wires": [
+            [
+                "fa54ec74c9f70b3b"
+            ]
+        ]
+    },
+    {
+        "id": "fa54ec74c9f70b3b",
+        "type": "OpcUa-Client",
+        "z": "16a9fef4be6ba735",
+        "endpoint": "573388758e5e0d0d",
+        "action": "subscribe",
+        "deadbandtype": "a",
+        "deadbandvalue": 1,
+        "time": 10,
+        "timeUnit": "s",
+        "certificate": "n",
+        "localfile": "",
+        "localkeyfile": "",
+        "securitymode": "None",
+        "securitypolicy": "None",
+        "useTransport": false,
+        "maxChunkCount": 1,
+        "maxMessageSize": 8192,
+        "receiveBufferSize": 8192,
+        "sendBufferSize": 8192,
+        "setstatusandtime": false,
+        "keepsessionalive": false,
+        "name": "",
+        "x": 360,
+        "y": 960,
+        "wires": [
+            [
+                "631ed86d96250edb"
+            ],
+            [],
+            []
+        ]
+    },
+    {
+        "id": "631ed86d96250edb",
+        "type": "function",
+        "z": "16a9fef4be6ba735",
+        "name": "function 6",
+        "func": "msg.payload = Number(msg.payload.toFixed(2));;\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 620,
+        "y": 980,
+        "wires": [
+            [
+                "e441f4b54af8f512"
+            ]
+        ]
     }
 ]
