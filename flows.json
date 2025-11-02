@@ -446,35 +446,6 @@
         "wires": []
     },
     {
-        "id": "244353510870c539",
-        "type": "inject",
-        "z": "16a9fef4be6ba735",
-        "name": "",
-        "props": [
-            {
-                "p": "payload"
-            },
-            {
-                "p": "topic",
-                "vt": "str"
-            }
-        ],
-        "repeat": "",
-        "crontab": "",
-        "once": false,
-        "onceDelay": 0.1,
-        "topic": "ns=4;s=|var|Delta/x86_64/RTE/SM/CNC/ TV+WV.Application.GVL.ApparentPower",
-        "payload": "",
-        "payloadType": "date",
-        "x": 180,
-        "y": 300,
-        "wires": [
-            [
-                "e115b900a8519f9e"
-            ]
-        ]
-    },
-    {
         "id": "e115b900a8519f9e",
         "type": "OpcUa-Client",
         "z": "16a9fef4be6ba735",
@@ -569,5 +540,34 @@
         "x": 920,
         "y": 460,
         "wires": []
+    },
+    {
+        "id": "ae53100e3ceacf9c",
+        "type": "inject",
+        "z": "16a9fef4be6ba735",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "ns=4;s=|var|Delta/x86_64/RTE/SM/CNC/ TV+WV.Application.GVL.ApparentPower",
+        "payload": "",
+        "payloadType": "date",
+        "x": 200,
+        "y": 340,
+        "wires": [
+            [
+                "e115b900a8519f9e"
+            ]
+        ]
     }
 ]
