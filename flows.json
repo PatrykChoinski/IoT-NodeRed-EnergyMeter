@@ -929,19 +929,6 @@
         ]
     },
     {
-        "id": "a53f6df38ed7043a",
-        "type": "ui_digital_clock",
-        "z": "16a9fef4be6ba735",
-        "name": "Clock",
-        "group": "group1",
-        "order": 1,
-        "width": "9",
-        "height": "3",
-        "x": 750,
-        "y": 1160,
-        "wires": []
-    },
-    {
         "id": "64ccb26c32df6132",
         "type": "inject",
         "z": "16a9fef4be6ba735",
@@ -958,16 +945,57 @@
         "repeat": "",
         "crontab": "",
         "once": true,
-        "onceDelay": 0.1,
+        "onceDelay": "1",
         "topic": "",
-        "payload": "iso",
+        "payload": "",
         "payloadType": "date",
         "x": 430,
         "y": 1140,
         "wires": [
             [
-                "a53f6df38ed7043a"
+                "9f908dd36c9536b8"
             ]
         ]
+    },
+    {
+        "id": "9f908dd36c9536b8",
+        "type": "function",
+        "z": "16a9fef4be6ba735",
+        "name": "function 7",
+        "func": "let now = new Date();\nmsg.payload = now.toLocaleTimeString('pl-PL', {\n    timeZone: 'Europe/Warsaw',\n    hour12: false\n});\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 660,
+        "y": 1160,
+        "wires": [
+            [
+                "d3d2920a0e6163e4"
+            ]
+        ]
+    },
+    {
+        "id": "d3d2920a0e6163e4",
+        "type": "ui_text",
+        "z": "16a9fef4be6ba735",
+        "group": "group1",
+        "order": 1,
+        "width": 0,
+        "height": 0,
+        "name": "",
+        "label": "Godzina",
+        "format": "{{msg.payload}}",
+        "layout": "row-center",
+        "className": "",
+        "style": false,
+        "font": "",
+        "fontSize": 16,
+        "color": "#000000",
+        "x": 880,
+        "y": 1180,
+        "wires": []
     }
 ]
