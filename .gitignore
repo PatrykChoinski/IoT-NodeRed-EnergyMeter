@@ -157,3 +157,4 @@ vite.config.ts.timestamp-*
 *.projectarchive
 *.cleaned
 *.tbf
+*.~u
