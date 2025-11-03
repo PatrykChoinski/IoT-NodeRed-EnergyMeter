@@ -43,7 +43,7 @@
         "tab": "ui-tab1",
         "order": 2,
         "disp": true,
-        "width": 6,
+        "width": "5",
         "collapse": false,
         "className": ""
     },
@@ -62,7 +62,7 @@
         "id": "371d530559606b3d",
         "type": "ui_base",
         "theme": {
-            "name": "theme-light",
+            "name": "theme-dark",
             "lightTheme": {
                 "default": "#0094CE",
                 "baseColor": "#0094CE",
@@ -74,7 +74,8 @@
                 "default": "#097479",
                 "baseColor": "#097479",
                 "baseFont": "-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen-Sans,Ubuntu,Cantarell,Helvetica Neue,sans-serif",
-                "edited": false
+                "edited": true,
+                "reset": false
             },
             "customTheme": {
                 "name": "Untitled Theme 1",
@@ -84,44 +85,44 @@
             },
             "themeState": {
                 "base-color": {
-                    "default": "#0094CE",
-                    "value": "#0094CE",
+                    "default": "#097479",
+                    "value": "#097479",
                     "edited": false
                 },
                 "page-titlebar-backgroundColor": {
-                    "value": "#0094CE",
+                    "value": "#097479",
                     "edited": false
                 },
                 "page-backgroundColor": {
-                    "value": "#fafafa",
-                    "edited": false
-                },
-                "page-sidebar-backgroundColor": {
-                    "value": "#ffffff",
-                    "edited": false
-                },
-                "group-textColor": {
-                    "value": "#1bbfff",
-                    "edited": false
-                },
-                "group-borderColor": {
-                    "value": "#ffffff",
-                    "edited": false
-                },
-                "group-backgroundColor": {
-                    "value": "#ffffff",
-                    "edited": false
-                },
-                "widget-textColor": {
                     "value": "#111111",
                     "edited": false
                 },
+                "page-sidebar-backgroundColor": {
+                    "value": "#333333",
+                    "edited": false
+                },
+                "group-textColor": {
+                    "value": "#0eb8c0",
+                    "edited": false
+                },
+                "group-borderColor": {
+                    "value": "#555555",
+                    "edited": false
+                },
+                "group-backgroundColor": {
+                    "value": "#333333",
+                    "edited": false
+                },
+                "widget-textColor": {
+                    "value": "#eeeeee",
+                    "edited": false
+                },
                 "widget-backgroundColor": {
-                    "value": "#0094ce",
+                    "value": "#097479",
                     "edited": false
                 },
                 "widget-borderColor": {
-                    "value": "#ffffff",
+                    "value": "#333333",
                     "edited": false
                 },
                 "base-font": {
@@ -280,11 +281,11 @@
         "name": "Voltage Gauge",
         "group": "8333d5ac10a88c5b",
         "order": 4,
-        "width": 6,
-        "height": 3,
+        "width": "5",
+        "height": "5",
         "gtype": "donut",
         "title": "Voltage",
-        "label": "units",
+        "label": "V",
         "format": "{{value}}",
         "min": 0,
         "max": "400",
@@ -310,7 +311,8 @@
         "tosidebar": true,
         "console": false,
         "tostatus": false,
-        "complete": "false",
+        "complete": "payload",
+        "targetType": "msg",
         "statusVal": "",
         "statusType": "auto",
         "x": 1040,
@@ -445,35 +447,6 @@
         "wires": []
     },
     {
-        "id": "244353510870c539",
-        "type": "inject",
-        "z": "16a9fef4be6ba735",
-        "name": "",
-        "props": [
-            {
-                "p": "payload"
-            },
-            {
-                "p": "topic",
-                "vt": "str"
-            }
-        ],
-        "repeat": "",
-        "crontab": "",
-        "once": false,
-        "onceDelay": 0.1,
-        "topic": "ns=4;s=|var|Delta/x86_64/RTE/SM/CNC/ TV+WV.Application.GVL.ApparentPower",
-        "payload": "",
-        "payloadType": "date",
-        "x": 180,
-        "y": 300,
-        "wires": [
-            [
-                "e115b900a8519f9e"
-            ]
-        ]
-    },
-    {
         "id": "e115b900a8519f9e",
         "type": "OpcUa-Client",
         "z": "16a9fef4be6ba735",
@@ -494,41 +467,452 @@
         "keepsessionalive": false,
         "name": "Current",
         "x": 460,
-        "y": 360,
+        "y": 400,
         "wires": [
             [
-                "885b4ab53277fd09"
+                "41fd305fa894079a"
             ],
             [],
             []
         ]
     },
     {
-        "id": "9b1a244cbe9ee2f6",
-        "type": "ui_text",
+        "id": "41fd305fa894079a",
+        "type": "function",
         "z": "16a9fef4be6ba735",
-        "group": "group1",
+        "name": "function 2",
+        "func": "msg.payload = Number(msg.payload.toFixed(3));;\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 700,
+        "y": 440,
+        "wires": [
+            [
+                "ef867810faea8f99",
+                "54883d5a01a66e2a"
+            ]
+        ]
+    },
+    {
+        "id": "ef867810faea8f99",
+        "type": "ui_gauge",
+        "z": "16a9fef4be6ba735",
+        "name": "Current",
+        "group": "8333d5ac10a88c5b",
         "order": 1,
-        "width": 0,
-        "height": 0,
-        "name": "",
-        "label": "Current:",
-        "format": "{{msg.payload}}",
-        "layout": "row-left",
+        "width": "5",
+        "height": "5",
+        "gtype": "donut",
+        "title": "Current",
+        "label": "A",
+        "format": "{{value}}",
+        "min": "0.001",
+        "max": "0.5",
+        "colors": [
+            "#00b500",
+            "#e6e600",
+            "#ca3838"
+        ],
+        "seg1": "",
+        "seg2": "",
+        "diff": false,
         "className": "",
-        "style": false,
-        "font": "",
-        "fontSize": 16,
-        "color": "#000000",
-        "x": 820,
+        "x": 920,
         "y": 420,
         "wires": []
     },
     {
-        "id": "885b4ab53277fd09",
+        "id": "54883d5a01a66e2a",
+        "type": "debug",
+        "z": "16a9fef4be6ba735",
+        "name": "debug 2",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 920,
+        "y": 460,
+        "wires": []
+    },
+    {
+        "id": "ae53100e3ceacf9c",
+        "type": "inject",
+        "z": "16a9fef4be6ba735",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": true,
+        "onceDelay": 0.1,
+        "topic": "ns=4;s=|var|Delta/x86_64/RTE/SM/CNC/ TV+WV.Application.GVL.Current",
+        "payload": "",
+        "payloadType": "num",
+        "x": 250,
+        "y": 380,
+        "wires": [
+            [
+                "e115b900a8519f9e"
+            ]
+        ]
+    },
+    {
+        "id": "9a84fef37dd95afc",
+        "type": "inject",
+        "z": "16a9fef4be6ba735",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": true,
+        "onceDelay": 0.1,
+        "topic": "ns=4;s=|var|Delta/x86_64/RTE/SM/CNC/ TV+WV.Application.GVL.ReactivePower",
+        "payload": "",
+        "payloadType": "num",
+        "x": 210,
+        "y": 640,
+        "wires": [
+            [
+                "bca95388d06c37fe"
+            ]
+        ]
+    },
+    {
+        "id": "bca95388d06c37fe",
+        "type": "OpcUa-Client",
+        "z": "16a9fef4be6ba735",
+        "endpoint": "573388758e5e0d0d",
+        "action": "subscribe",
+        "deadbandtype": "a",
+        "deadbandvalue": 1,
+        "time": "100",
+        "timeUnit": "ms",
+        "certificate": "n",
+        "localfile": "",
+        "localkeyfile": "",
+        "securitymode": "None",
+        "securitypolicy": "None",
+        "useTransport": false,
+        "maxChunkCount": 1,
+        "maxMessageSize": 8192,
+        "receiveBufferSize": 8192,
+        "sendBufferSize": 8192,
+        "setstatusandtime": false,
+        "keepsessionalive": false,
+        "name": "Power",
+        "x": 390,
+        "y": 660,
+        "wires": [
+            [
+                "df77873a82423dec"
+            ],
+            [],
+            []
+        ]
+    },
+    {
+        "id": "df77873a82423dec",
         "type": "function",
         "z": "16a9fef4be6ba735",
-        "name": "function 2",
+        "name": "function 3",
+        "func": "msg.payload = Number(msg.payload.toFixed(4));;\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 660,
+        "y": 680,
+        "wires": [
+            [
+                "1c0bad4b6e16e191",
+                "c8d785aa1e9a5ee0"
+            ]
+        ]
+    },
+    {
+        "id": "1c0bad4b6e16e191",
+        "type": "ui_gauge",
+        "z": "16a9fef4be6ba735",
+        "name": "Power",
+        "group": "8333d5ac10a88c5b",
+        "order": 2,
+        "width": "5",
+        "height": "5",
+        "gtype": "donut",
+        "title": "Power",
+        "label": "W",
+        "format": "{{value}}",
+        "min": "0.0001",
+        "max": "0.1",
+        "colors": [
+            "#00b500",
+            "#e6e600",
+            "#ca3838"
+        ],
+        "seg1": "",
+        "seg2": "",
+        "diff": false,
+        "className": "",
+        "x": 870,
+        "y": 660,
+        "wires": []
+    },
+    {
+        "id": "c8d785aa1e9a5ee0",
+        "type": "debug",
+        "z": "16a9fef4be6ba735",
+        "name": "debug 3",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 860,
+        "y": 780,
+        "wires": []
+    },
+    {
+        "id": "f31905c670fb7607",
+        "type": "inject",
+        "z": "16a9fef4be6ba735",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": true,
+        "onceDelay": 0.1,
+        "topic": "ns=4;s=|var|Delta/x86_64/RTE/SM/CNC/ TV+WV.Application.GVL.Frequency",
+        "payload": "",
+        "payloadType": "num",
+        "x": 190,
+        "y": 800,
+        "wires": [
+            [
+                "2827f840b85abaa3"
+            ]
+        ]
+    },
+    {
+        "id": "c88dc6b11395d081",
+        "type": "ui_gauge",
+        "z": "16a9fef4be6ba735",
+        "name": "",
+        "group": "8333d5ac10a88c5b",
+        "order": 3,
+        "width": 0,
+        "height": 0,
+        "gtype": "donut",
+        "title": "Frequency",
+        "label": "units",
+        "format": "{{value}}",
+        "min": 0,
+        "max": "100",
+        "colors": [
+            "#00b500",
+            "#e6e600",
+            "#ca3838"
+        ],
+        "seg1": "",
+        "seg2": "",
+        "diff": false,
+        "className": "",
+        "x": 850,
+        "y": 860,
+        "wires": []
+    },
+    {
+        "id": "661bb6d67bc1414c",
+        "type": "debug",
+        "z": "16a9fef4be6ba735",
+        "name": "debug 4",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 840,
+        "y": 920,
+        "wires": []
+    },
+    {
+        "id": "2827f840b85abaa3",
+        "type": "OpcUa-Client",
+        "z": "16a9fef4be6ba735",
+        "endpoint": "573388758e5e0d0d",
+        "action": "subscribe",
+        "deadbandtype": "a",
+        "deadbandvalue": 1,
+        "time": "100",
+        "timeUnit": "ms",
+        "certificate": "n",
+        "localfile": "",
+        "localkeyfile": "",
+        "securitymode": "None",
+        "securitypolicy": "None",
+        "useTransport": false,
+        "maxChunkCount": 1,
+        "maxMessageSize": 8192,
+        "receiveBufferSize": 8192,
+        "sendBufferSize": 8192,
+        "setstatusandtime": false,
+        "keepsessionalive": false,
+        "name": "Frequency",
+        "x": 350,
+        "y": 820,
+        "wires": [
+            [
+                "739eb86b1695902c"
+            ],
+            [],
+            []
+        ]
+    },
+    {
+        "id": "739eb86b1695902c",
+        "type": "function",
+        "z": "16a9fef4be6ba735",
+        "name": "function 5",
+        "func": "msg.payload = Number(msg.payload.toFixed(3));;\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 600,
+        "y": 860,
+        "wires": [
+            [
+                "c88dc6b11395d081",
+                "661bb6d67bc1414c"
+            ]
+        ]
+    },
+    {
+        "id": "e441f4b54af8f512",
+        "type": "ui_toast",
+        "z": "16a9fef4be6ba735",
+        "position": "bottom left",
+        "displayTime": "5",
+        "highlight": "Orange",
+        "sendall": true,
+        "outputs": 0,
+        "ok": "OK",
+        "cancel": "",
+        "raw": false,
+        "className": "",
+        "topic": "Max Voltage on this day",
+        "name": "Max Voltage",
+        "x": 870,
+        "y": 1020,
+        "wires": []
+    },
+    {
+        "id": "e7a0f568b7fcf805",
+        "type": "inject",
+        "z": "16a9fef4be6ba735",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": true,
+        "onceDelay": 0.1,
+        "topic": "ns=4;s=|var|Delta/x86_64/RTE/SM/CNC/ TV+WV.Application.GVL.MaxVoltage",
+        "payload": "",
+        "payloadType": "num",
+        "x": 170,
+        "y": 960,
+        "wires": [
+            [
+                "fa54ec74c9f70b3b"
+            ]
+        ]
+    },
+    {
+        "id": "fa54ec74c9f70b3b",
+        "type": "OpcUa-Client",
+        "z": "16a9fef4be6ba735",
+        "endpoint": "573388758e5e0d0d",
+        "action": "subscribe",
+        "deadbandtype": "a",
+        "deadbandvalue": 1,
+        "time": 10,
+        "timeUnit": "s",
+        "certificate": "n",
+        "localfile": "",
+        "localkeyfile": "",
+        "securitymode": "None",
+        "securitypolicy": "None",
+        "useTransport": false,
+        "maxChunkCount": 1,
+        "maxMessageSize": 8192,
+        "receiveBufferSize": 8192,
+        "sendBufferSize": 8192,
+        "setstatusandtime": false,
+        "keepsessionalive": false,
+        "name": "",
+        "x": 360,
+        "y": 960,
+        "wires": [
+            [
+                "631ed86d96250edb"
+            ],
+            [],
+            []
+        ]
+    },
+    {
+        "id": "631ed86d96250edb",
+        "type": "function",
+        "z": "16a9fef4be6ba735",
+        "name": "function 6",
         "func": "msg.payload = Number(msg.payload.toFixed(2));;\nreturn msg;",
         "outputs": 1,
         "timeout": 0,
@@ -537,11 +921,84 @@
         "finalize": "",
         "libs": [],
         "x": 620,
-        "y": 380,
+        "y": 980,
         "wires": [
             [
-                "9b1a244cbe9ee2f6"
+                "e441f4b54af8f512"
             ]
+        ]
+    },
+    {
+        "id": "64ccb26c32df6132",
+        "type": "inject",
+        "z": "16a9fef4be6ba735",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": true,
+        "onceDelay": "0.1",
+        "topic": "",
+        "payload": "iso",
+        "payloadType": "date",
+        "x": 430,
+        "y": 1140,
+        "wires": [
+            [
+                "9f908dd36c9536b8"
+            ]
+        ]
+    },
+    {
+        "id": "9f908dd36c9536b8",
+        "type": "function",
+        "z": "16a9fef4be6ba735",
+        "name": "function 7",
+        "func": "let now = new Date();\nmsg.payload = now.toLocaleTimeString('pl-PL', {\n    timeZone: 'Europe/Warsaw',\n    hour12: false\n});\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 660,
+        "y": 1160,
+        "wires": [
+            [
+                "5625d5362353f9c1"
+            ]
+        ]
+    },
+    {
+        "id": "5625d5362353f9c1",
+        "type": "ui_text_input",
+        "z": "16a9fef4be6ba735",
+        "name": "",
+        "label": "",
+        "tooltip": "",
+        "group": "group1",
+        "order": 4,
+        "width": "5",
+        "height": "2",
+        "passthru": false,
+        "mode": "text",
+        "delay": 300,
+        "topic": "topic",
+        "sendOnBlur": true,
+        "className": "",
+        "topicType": "msg",
+        "x": 860,
+        "y": 1160,
+        "wires": [
+            []
         ]
     }
 ]
