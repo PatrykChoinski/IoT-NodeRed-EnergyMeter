@@ -1228,7 +1228,7 @@
         "type": "function",
         "z": "16a9fef4be6ba735",
         "name": "Check Voltage",
-        "func": "if (msg.payload < 200) {\n    msg.topic = \"ALARM\";\n    msg.payload = \"⚠️ Napięcie poniżej 200V! (\" + msg.payload + \" V)\";\n    return [msg, null];  // wyjście 1 = alarm\n} else {\n    msg.payload = \"OK (\" + msg.payload + \" V)\";\n    return [null, msg];  // wyjście 2 = normalny stan\n}\n",
+        "func": "// Ustawienie progu alarmowego\nconst threshold = 200;\n\n// Pobierz ostatni stan alarmu z kontekstu (zachowany między cyklami)\nlet alarmActive = context.get('alarmActive') || false;\n\nlet voltage = msg.payload;\nlet newMsg = null;\n\n// Jeśli napięcie spadło poniżej progu i wcześniej nie było alarmu\nif (voltage < threshold && !alarmActive) {\n    newMsg = {\n        topic: \"ALARM\",\n        payload: `⚠️ Napięcie poniżej ${threshold}V! (${voltage.toFixed(1)} V)`\n    };\n    alarmActive = true;\n}\n\n// Jeśli napięcie wróciło powyżej progu i wcześniej był alarm – kasujemy alarm\nelse if (voltage >= threshold && alarmActive) {\n    newMsg = {\n        topic: \"OK\",\n        payload: `✅ Napięcie wróciło do normy (${voltage.toFixed(1)} V)`\n    };\n    alarmActive = false;\n}\n\n// Zapisz aktualny stan alarmu w kontekście\ncontext.set('alarmActive', alarmActive);\n\n// Zwróć tylko wtedy, gdy zmienił się stan (wystąpił alarm lub jego reset)\nif (newMsg) {\n    return newMsg;\n}\nreturn null;\n",
         "outputs": 1,
         "timeout": 0,
         "noerr": 0,
