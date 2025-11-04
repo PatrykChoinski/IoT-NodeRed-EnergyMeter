@@ -1239,7 +1239,8 @@
         "y": 300,
         "wires": [
             [
-                "34a7458ee307eece"
+                "34a7458ee307eece",
+                "3e3a1dbd33f8761c"
             ]
         ]
     },
@@ -1261,6 +1262,25 @@
         "fontSize": 16,
         "color": "#000000",
         "x": 620,
+        "y": 360,
+        "wires": []
+    },
+    {
+        "id": "3e3a1dbd33f8761c",
+        "type": "ui_toast",
+        "z": "16a9fef4be6ba735",
+        "position": "top right",
+        "displayTime": "5",
+        "highlight": "RED",
+        "sendall": true,
+        "outputs": 0,
+        "ok": "OK",
+        "cancel": "",
+        "raw": false,
+        "className": "",
+        "topic": "",
+        "name": "Alarm",
+        "x": 750,
         "y": 360,
         "wires": []
     }
