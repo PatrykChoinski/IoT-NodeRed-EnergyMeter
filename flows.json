@@ -340,7 +340,7 @@
             [
                 "d9dc87ed006e3cf9",
                 "0f92b1718cb24d06",
-                "e8816ea279c3e83a"
+                "5ff973a6d60c0a34"
             ]
         ]
     },
@@ -1235,8 +1235,50 @@
         "triggerType": null,
         "triggerCondition": "payload < 200",
         "triggerConditionError": false,
-        "x": 520,
-        "y": 340,
+        "x": 680,
+        "y": 320,
+        "wires": []
+    },
+    {
+        "id": "5ff973a6d60c0a34",
+        "type": "function",
+        "z": "16a9fef4be6ba735",
+        "name": "Check Voltage",
+        "func": "if (msg.payload < 200) {\n    msg.topic = \"ALARM\";\n    msg.payload = \"⚠️ Napięcie poniżej 200V! (\" + msg.payload + \" V)\";\n    return [msg, null];  // wyjście 1 = alarm\n} else {\n    msg.payload = \"OK (\" + msg.payload + \" V)\";\n    return [null, msg];  // wyjście 2 = normalny stan\n}\n",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 360,
+        "y": 300,
+        "wires": [
+            [
+                "e8816ea279c3e83a",
+                "34a7458ee307eece"
+            ]
+        ]
+    },
+    {
+        "id": "34a7458ee307eece",
+        "type": "ui_text",
+        "z": "16a9fef4be6ba735",
+        "group": "group1",
+        "order": 5,
+        "width": "12",
+        "height": "3",
+        "name": "",
+        "label": "ALARM",
+        "format": "{{msg.payload}}",
+        "layout": "row-spread",
+        "className": "",
+        "style": false,
+        "font": "",
+        "fontSize": 16,
+        "color": "#000000",
+        "x": 620,
+        "y": 360,
         "wires": []
     }
 ]
