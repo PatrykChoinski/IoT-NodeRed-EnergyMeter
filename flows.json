@@ -1224,22 +1224,6 @@
         "wires": []
     },
     {
-        "id": "e8816ea279c3e83a",
-        "type": "AnamicoAlarmSensor",
-        "z": "16a9fef4be6ba735",
-        "name": "Napięcie poniżej 200V",
-        "panel": "b71ba09c847d21a2",
-        "alarmStates": [
-            "0"
-        ],
-        "triggerType": null,
-        "triggerCondition": "payload < 200",
-        "triggerConditionError": false,
-        "x": 680,
-        "y": 320,
-        "wires": []
-    },
-    {
         "id": "5ff973a6d60c0a34",
         "type": "function",
         "z": "16a9fef4be6ba735",
@@ -1255,7 +1239,6 @@
         "y": 300,
         "wires": [
             [
-                "e8816ea279c3e83a",
                 "34a7458ee307eece"
             ]
         ]
