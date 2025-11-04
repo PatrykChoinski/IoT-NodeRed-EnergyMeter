@@ -1231,7 +1231,7 @@
         "name": "Napięcie poniżej 200V",
         "panel": "b71ba09c847d21a2",
         "alarmStates": [
-            "3"
+            "0"
         ],
         "triggerType": null,
         "triggerCondition": "payload < 200",
