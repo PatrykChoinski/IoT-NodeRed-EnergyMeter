@@ -278,6 +278,12 @@
         "height": 1
     },
     {
+        "id": "b71ba09c847d21a2",
+        "type": "AnamicoAlarmPanel",
+        "name": "AlarmEnergia",
+        "contextStore": "memory"
+    },
+    {
         "id": "d9dc87ed006e3cf9",
         "type": "OpcUa-Client",
         "z": "16a9fef4be6ba735",
@@ -303,7 +309,9 @@
             [
                 "2c6ed7bb0750fc00"
             ],
-            [],
+            [
+                "e8816ea279c3e83a"
+            ],
             []
         ]
     },
@@ -1214,6 +1222,22 @@
         "statusType": "auto",
         "x": 1100,
         "y": 1300,
+        "wires": []
+    },
+    {
+        "id": "e8816ea279c3e83a",
+        "type": "AnamicoAlarmSensor",
+        "z": "16a9fef4be6ba735",
+        "name": "Napięcie poniżej 200V",
+        "panel": "b71ba09c847d21a2",
+        "alarmStates": [
+            "3"
+        ],
+        "triggerType": null,
+        "triggerCondition": "payload < 200",
+        "triggerConditionError": false,
+        "x": 780,
+        "y": 340,
         "wires": []
     }
 ]
