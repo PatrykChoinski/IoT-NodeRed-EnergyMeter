@@ -198,7 +198,7 @@
         "className": ""
     },
     {
-        "id": "1c8c6c9a4c64f3d4",
+        "id": "0c035ac0a4ea307c",
         "type": "ui_spacer",
         "z": "16a9fef4be6ba735",
         "name": "spacer",
@@ -208,7 +208,7 @@
         "height": 1
     },
     {
-        "id": "20cc5f76df10397a",
+        "id": "770fd2523789e7cb",
         "type": "ui_spacer",
         "z": "16a9fef4be6ba735",
         "name": "spacer",
@@ -218,7 +218,17 @@
         "height": 1
     },
     {
-        "id": "e7d0907b58bc2a11",
+        "id": "34cccccd9fa119fe",
+        "type": "ui_spacer",
+        "z": "16a9fef4be6ba735",
+        "name": "spacer",
+        "group": "8333d5ac10a88c5b",
+        "order": 2,
+        "width": 5,
+        "height": 1
+    },
+    {
+        "id": "e3d8a6cc55d6e86f",
         "type": "ui_spacer",
         "z": "16a9fef4be6ba735",
         "name": "spacer",
@@ -228,7 +238,7 @@
         "height": 1
     },
     {
-        "id": "91768624923bc4f9",
+        "id": "eeb5c4464a408d74",
         "type": "ui_spacer",
         "z": "16a9fef4be6ba735",
         "name": "spacer",
@@ -238,7 +248,7 @@
         "height": 1
     },
     {
-        "id": "e49197a36c187f85",
+        "id": "39523a8b73d13794",
         "type": "ui_spacer",
         "z": "16a9fef4be6ba735",
         "name": "spacer",
@@ -248,7 +258,7 @@
         "height": 1
     },
     {
-        "id": "dfa001fb77c04649",
+        "id": "a1ad3cacc81d7be5",
         "type": "ui_spacer",
         "z": "16a9fef4be6ba735",
         "name": "spacer",
@@ -258,7 +268,7 @@
         "height": 1
     },
     {
-        "id": "b80b1d3c5719af2c",
+        "id": "c9f629c17ff4ab41",
         "type": "ui_spacer",
         "z": "16a9fef4be6ba735",
         "name": "spacer",
@@ -385,8 +395,8 @@
         "name": "Voltage Gauge",
         "group": "8333d5ac10a88c5b",
         "order": 1,
-        "width": 5,
-        "height": 5,
+        "width": 0,
+        "height": 0,
         "gtype": "donut",
         "title": "Voltage",
         "label": "V",
@@ -607,7 +617,7 @@
         "z": "16a9fef4be6ba735",
         "name": "Current",
         "group": "8333d5ac10a88c5b",
-        "order": 2,
+        "order": 3,
         "width": 5,
         "height": 5,
         "gtype": "donut",
