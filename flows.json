@@ -309,9 +309,7 @@
             [
                 "2c6ed7bb0750fc00"
             ],
-            [
-                "e8816ea279c3e83a"
-            ],
+            [],
             []
         ]
     },
@@ -341,7 +339,8 @@
         "wires": [
             [
                 "d9dc87ed006e3cf9",
-                "0f92b1718cb24d06"
+                "0f92b1718cb24d06",
+                "e8816ea279c3e83a"
             ]
         ]
     },
@@ -1236,7 +1235,7 @@
         "triggerType": null,
         "triggerCondition": "payload < 200",
         "triggerConditionError": false,
-        "x": 780,
+        "x": 520,
         "y": 340,
         "wires": []
     }
