@@ -1000,5 +1000,15 @@
         "wires": [
             []
         ]
+    },
+    {
+        "id": "8d10f16d49cdbeb9",
+        "type": "comment",
+        "z": "16a9fef4be6ba735",
+        "name": "Komentarz",
+        "info": "",
+        "x": 380,
+        "y": 1260,
+        "wires": []
     }
 ]
