@@ -860,7 +860,7 @@
         "height": 0,
         "gtype": "donut",
         "title": "Frequency",
-        "label": "units",
+        "label": "Hz",
         "format": "{{value}}",
         "min": 0,
         "max": "100",
