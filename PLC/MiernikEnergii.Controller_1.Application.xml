@@ -6,6 +6,7 @@
     <ProjectInfo name="MiernikEnergii" devicename="Controller_1" appname="Application" />
   </Header>
   <TypeList>
+    <TypeSimple name="T_BOOL" size="1" swapsize="0" typeclass="Bool" iecname="BOOL" />
     <TypeSimple name="T_BYTE" size="1" swapsize="1" typeclass="Byte" iecname="BYTE" />
     <TypeSimple name="T_REAL" size="4" swapsize="4" typeclass="Real" iecname="REAL" />
     <TypeSimple name="T_WORD" size="2" swapsize="2" typeclass="Word" iecname="WORD" />
@@ -36,6 +37,7 @@
         <Node name="THDCA" type="T_REAL" access="ReadWrite" />
         <Node name="THDVA" type="T_REAL" access="ReadWrite" />
         <Node name="Voltage" type="T_REAL" access="ReadWrite" />
+        <Node name="VoltageOff" type="T_BOOL" access="ReadWrite" />
       </Node>
     </Node>
   </NodeList>

@@ -421,7 +421,7 @@
         "type": "debug",
         "z": "16a9fef4be6ba735",
         "name": "debug 7",
-        "active": true,
+        "active": false,
         "tosidebar": true,
         "console": false,
         "tostatus": false,
@@ -438,7 +438,7 @@
         "type": "debug",
         "z": "16a9fef4be6ba735",
         "name": "Debug OPC Data",
-        "active": true,
+        "active": false,
         "tosidebar": true,
         "console": false,
         "tostatus": false,
@@ -1112,6 +1112,88 @@
         "x": 860,
         "y": 1160,
         "wires": [
+            []
+        ]
+    },
+    {
+        "id": "bcfd202bb41e1601",
+        "type": "ui_switch",
+        "z": "16a9fef4be6ba735",
+        "name": "",
+        "label": "Voltage Off/On",
+        "tooltip": "",
+        "group": "group1",
+        "order": 4,
+        "width": 0,
+        "height": 0,
+        "passthru": false,
+        "decouple": "false",
+        "topic": "topic",
+        "topicType": "msg",
+        "style": "",
+        "onvalue": "true",
+        "onvalueType": "bool",
+        "onicon": "",
+        "oncolor": "",
+        "offvalue": "false",
+        "offvalueType": "bool",
+        "officon": "",
+        "offcolor": "",
+        "animate": false,
+        "className": "",
+        "x": 480,
+        "y": 1280,
+        "wires": [
+            [
+                "7903d475d13fee93"
+            ]
+        ]
+    },
+    {
+        "id": "7903d475d13fee93",
+        "type": "function",
+        "z": "16a9fef4be6ba735",
+        "name": "function 8",
+        "func": "msg.topic = \"ns=4;s=|var|Delta/x86_64/RTE/SM/CNC/TV+WV.Application.GVL.VoltageOff\";\nmsg.payload = msg.payload ? true : false;\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 700,
+        "y": 1280,
+        "wires": [
+            [
+                "fa76951cb85f80c9"
+            ]
+        ]
+    },
+    {
+        "id": "fa76951cb85f80c9",
+        "type": "OpcUa-Client",
+        "z": "16a9fef4be6ba735",
+        "endpoint": "573388758e5e0d0d",
+        "action": "write",
+        "deadbandvalue": "",
+        "time": "1000",
+        "timeUnit": "ms",
+        "certificate": "n",
+        "localfile": "",
+        "localkeyfile": "",
+        "useTransport": false,
+        "maxChunkCount": "",
+        "maxMessageSize": "",
+        "receiveBufferSize": "",
+        "sendBufferSize": "",
+        "setstatusandtime": false,
+        "keepsessionalive": false,
+        "name": "WriteVoltageOff",
+        "x": 900,
+        "y": 1280,
+        "wires": [
+            [],
+            [],
             []
         ]
     }
