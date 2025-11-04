@@ -952,7 +952,7 @@
         "outputs": 0,
         "ok": "OK",
         "cancel": "",
-        "raw": false,
+        "raw": true,
         "className": "",
         "topic": "Max Voltage on this day",
         "name": "Max Voltage",
