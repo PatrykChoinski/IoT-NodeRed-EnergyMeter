@@ -303,13 +303,15 @@
         "setstatusandtime": false,
         "keepsessionalive": false,
         "name": "Voltage",
-        "x": 560,
-        "y": 260,
+        "x": 500,
+        "y": 240,
         "wires": [
             [
                 "2c6ed7bb0750fc00"
             ],
-            [],
+            [
+                "5ff973a6d60c0a34"
+            ],
             []
         ]
     },
@@ -339,8 +341,7 @@
         "wires": [
             [
                 "d9dc87ed006e3cf9",
-                "0f92b1718cb24d06",
-                "5ff973a6d60c0a34"
+                "0f92b1718cb24d06"
             ]
         ]
     },
@@ -1235,8 +1236,8 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 360,
-        "y": 300,
+        "x": 640,
+        "y": 340,
         "wires": [
             [
                 "eb9d9c03e919cd23"
@@ -1258,8 +1259,8 @@
         "className": "",
         "topic": "ALARM",
         "name": "ALARM",
-        "x": 580,
-        "y": 340,
+        "x": 820,
+        "y": 360,
         "wires": []
     }
 ]
