@@ -1228,7 +1228,7 @@
         "type": "function",
         "z": "16a9fef4be6ba735",
         "name": "Check Voltage",
-        "func": "let voltage = msg.payload;\n\nif (typeof voltage !== \"number\" || isNaN(voltage)) return null;\n\nvoltage = Number(voltage.toFixed(2));\n\nlet alarm = voltage < 200;\nlet message = alarm\n    ? `⚠️ ALARM: Napięcie spadło poniżej 200 V! (${voltage} V)`\n    : `✅ Napięcie prawidłowe: ${voltage} V`;\n\nmsg.payload = message;  // <-- tu ustawiamy czysty tekst\nreturn msg;\n",
+        "func": "let voltage = msg.payload;\n\n// Sprawdź, czy napięcie to liczba\nif (typeof voltage !== \"number\" || isNaN(voltage)) return null;\n\n// Zaokrąglij do 2 miejsc po przecinku\nvoltage = Number(voltage.toFixed(2));\n\n// Jeśli napięcie poniżej 200 V – wyślij alarm\nif (voltage < 200) {\n    msg.payload = `⚠️ ALARM: Napięcie spadło poniżej 200 V! (${voltage} V)`;\n    return msg;\n}\n\n// W innym przypadku – nie wysyłaj nic\nreturn null;\n",
         "outputs": 1,
         "timeout": "0",
         "noerr": 0,
