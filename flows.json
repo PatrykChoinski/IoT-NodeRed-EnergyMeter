@@ -1228,7 +1228,7 @@
         "type": "function",
         "z": "16a9fef4be6ba735",
         "name": "Check Voltage",
-        "func": "let voltage = msg.payload;\n\n// Sprawdź, czy napięcie to liczba\nif (typeof voltage !== \"number\" || isNaN(voltage)) return null;\n\n// Zaokrąglij do 2 miejsc po przecinku\nvoltage = Number(voltage.toFixed(2));\n\n// Jeśli napięcie poniżej 200 V – wyślij alarm\nif (voltage < 200) {\n    msg.payload = `⚠️ ALARM: Napięcie spadło poniżej 200 V! (${voltage} V)`;\n    return msg;\n}\n\n// W innym przypadku – nie wysyłaj nic\nreturn null;\n",
+        "func": "let voltage = msg.payload;\n\n// Sprawdź, czy napięcie to liczba\nif (typeof voltage !== \"number\" || isNaN(voltage)) return null;\n\n// Zaokrąglij do 2 miejsc po przecinku\nvoltage = Number(voltage.toFixed(2));\n\n// Pobierz poprzedni stan alarmu (zapamiętany w kontekście)\nlet lastAlarm = context.get(\"lastAlarm\") || false;\nlet currentAlarm = voltage < 200;\n\n// Jeśli właśnie przechodzimy z \"brak alarmu\" -> \"alarm\", wyślij komunikat\nif (currentAlarm && !lastAlarm) {\n    msg.payload = `⚠️ ALARM: Napięcie spadło poniżej 200 V! (${voltage} V)`;\n    context.set(\"lastAlarm\", true);\n    return msg;\n}\n\n// Jeśli napięcie wróciło powyżej 200 V, zresetuj stan alarmu\nif (!currentAlarm && lastAlarm) {\n    context.set(\"lastAlarm\", false);\n}\n\n// W innym przypadku – nic nie wysyłaj\nreturn null;\n",
         "outputs": 1,
         "timeout": "0",
         "noerr": 0,
