@@ -1229,7 +1229,7 @@
         "type": "function",
         "z": "16a9fef4be6ba735",
         "name": "Check Voltage",
-        "func": "if (msg.payload < 200) {\n    msg.topic = \"ALARM\";\n    msg.payload = \"⚠️ Napięcie poniżej 200V! (\" + msg.payload + \" V)\";\n} else {\n    msg.topic = \"OK\";\n    msg.payload = \"✅ Napięcie OK (\" + msg.payload + \" V)\";\n}\nreturn msg;\n",
+        "func": "// Pobranie poprzedniego stanu (czy był alarm)\nlet prevAlarm = context.get(\"alarmActive\") || false;\n\n// Odczyt napięcia i konwersja na liczbę\nlet voltage = Number(msg.payload);\n\n// Sprawdzenie progu\nif (voltage < 200) {\n    // Jeśli wcześniej NIE było alarmu → zgłoś alarm\n    if (!prevAlarm) {\n        context.set(\"alarmActive\", true); // zapamiętaj, że alarm jest aktywny\n        msg.topic = \"ALARM\";\n        msg.payload = \"⚠️ Spadek napięcia poniżej 200V! (\" + voltage + \" V)\";\n        return [msg, null]; // wyjście 1 = alarm\n    } else {\n        // Nadal poniżej 200, ale alarm już aktywny → nic nie wysyłaj\n        return [null, null];\n    }\n} else {\n    // Napięcie wróciło do normy — jeśli wcześniej był alarm, zgłoś powrót do OK\n    if (prevAlarm) {\n        context.set(\"alarmActive\", false);\n        msg.topic = \"OK\";\n        msg.payload = \"✅ Napięcie wróciło do normy (\" + voltage + \" V)\";\n        return [null, msg]; // wyjście 2 = powiadomienie o powrocie\n    } else {\n        // Napięcie OK i brak alarmu wcześniej — nic nie wysyłaj\n        return [null, null];\n    }\n}\n",
         "outputs": 1,
         "timeout": "0",
         "noerr": 0,
