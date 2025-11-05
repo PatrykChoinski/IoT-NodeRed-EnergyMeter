@@ -1239,29 +1239,27 @@
         "y": 300,
         "wires": [
             [
-                "34a7458ee307eece"
+                "eb9d9c03e919cd23"
             ]
         ]
     },
     {
-        "id": "34a7458ee307eece",
-        "type": "ui_text",
+        "id": "eb9d9c03e919cd23",
+        "type": "ui_toast",
         "z": "16a9fef4be6ba735",
-        "group": "group1",
-        "order": 5,
-        "width": "12",
-        "height": "3",
-        "name": "",
-        "label": "ALARM",
-        "format": "{{msg.payload}}",
-        "layout": "row-spread",
+        "position": "top right",
+        "displayTime": "10",
+        "highlight": "Red",
+        "sendall": true,
+        "outputs": 0,
+        "ok": "OK",
+        "cancel": "",
+        "raw": false,
         "className": "",
-        "style": false,
-        "font": "",
-        "fontSize": 16,
-        "color": "#000000",
-        "x": 660,
-        "y": 320,
+        "topic": "ALARM",
+        "name": "ALARM",
+        "x": 580,
+        "y": 340,
         "wires": []
     }
 ]
