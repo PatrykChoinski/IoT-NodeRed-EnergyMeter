@@ -1228,9 +1228,9 @@
         "type": "function",
         "z": "16a9fef4be6ba735",
         "name": "Check Voltage",
-        "func": "if (msg.payload < 200) {\n    msg.topic = \"ALARM\";\n    msg.payload = \"⚠️ Napięcie poniżej 200V! (\" + msg.payload + \" V)\";\n    return [msg, null];  // wyjście 1 = alarm\n} else {\n    msg.payload = \"OK (\" + msg.payload + \" V)\";\n    return [null, msg];  // wyjście 2 = normalny stan\n}\n",
-        "outputs": 1,
-        "timeout": 0,
+        "func": "if (msg.payload < 200) {\n    msg.topic = \"ALARM\";\n    msg.payload = \"⚠️ Napięcie poniżej 200V! (\" + msg.payload + \" V)\";\n    return [msg, null]; // wyjście 1 = alarm\n} else {\n    msg.topic = \"OK\";\n    msg.payload = \"✅ Napięcie OK (\" + msg.payload + \" V)\";\n    return [null, msg]; // wyjście 2 = stan normalny\n}\n",
+        "outputs": 2,
+        "timeout": "2",
         "noerr": 0,
         "initialize": "",
         "finalize": "",
@@ -1240,6 +1240,9 @@
         "wires": [
             [
                 "34a7458ee307eece"
+            ],
+            [
+                "425ab00f26ca030a"
             ]
         ]
     },
@@ -1260,7 +1263,28 @@
         "font": "",
         "fontSize": 16,
         "color": "#000000",
-        "x": 620,
+        "x": 660,
+        "y": 320,
+        "wires": []
+    },
+    {
+        "id": "425ab00f26ca030a",
+        "type": "ui_text",
+        "z": "16a9fef4be6ba735",
+        "group": "group1",
+        "order": 6,
+        "width": 0,
+        "height": 0,
+        "name": "",
+        "label": "Stan pracy",
+        "format": "{{msg.payload}}",
+        "layout": "row-spread",
+        "className": "",
+        "style": false,
+        "font": "",
+        "fontSize": 16,
+        "color": "#000000",
+        "x": 650,
         "y": 360,
         "wires": []
     }
