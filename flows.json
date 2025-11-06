@@ -469,7 +469,7 @@
         "height": 0,
         "label": "Voltage Chart",
         "chartType": "line",
-        "legend": "true",
+        "legend": "false",
         "xformat": "HH:mm:ss",
         "interpolate": "linear",
         "nodata": "",
