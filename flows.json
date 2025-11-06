@@ -1036,7 +1036,7 @@
         "type": "function",
         "z": "16a9fef4be6ba735",
         "name": "function 6",
-        "func": "// Zakładamy, że z węzła OPC UA przychodzi obiekt o strukturze:\n// msg.payload.value.value = 230.5\n\nlet voltage = msg.payload?.value?.value;\n\n// Sprawdź, czy mamy dane\nif (voltage === undefined || voltage === null) {\n    node.warn(\"Brak wartości napięcia z OPC UA\");\n    return null;\n}\n\n// Opcjonalnie: zaokrąglenie do 2 miejsc po przecinku\nvoltage = Math.round(voltage * 100) / 100;\n\n// Przygotuj komunikat do następnego węzła\nmsg.payload = `Maksymalne napięcie: ${voltage} V`;\nmsg.voltage = voltage; // jeśli chcesz też surową wartość\nmsg.topic = \"VoltageMax\";\n\nreturn msg;\n",
+        "func": "// Pobierz wartość napięcia z wiadomości OPC UA\nlet voltage = msg.payload?.value?.value;\n\n// Sprawdź, czy napięcie to liczba\nif (typeof voltage !== \"number\" || isNaN(voltage)) return null;\n\n// Zaokrąglij do 2 miejsc po przecinku\nvoltage = Number(voltage.toFixed(2));\n\n// Pobierz poprzedni stan alarmu (zapamiętany w kontekście)\nlet lastAlarm = context.get(\"lastAlarm\") || false;\nlet currentAlarm = voltage < 200;\n\n// Jeśli właśnie przechodzimy z \"brak alarmu\" -> \"alarm\", wyślij komunikat\nif (currentAlarm && !lastAlarm) {\n    msg.payload = `⚠️ ALARM: Napięcie spadło poniżej 200 V! (obecnie: ${voltage} V)`;\n    context.set(\"lastAlarm\", true);\n    return msg;\n}\n\n// Jeśli napięcie wróciło powyżej 200 V, zresetuj stan alarmu\nif (!currentAlarm && lastAlarm) {\n    context.set(\"lastAlarm\", false);\n    msg.payload = `✅ Napięcie wróciło do normy: ${voltage} V`;\n    return msg;\n}\n\n// W innym przypadku – nic nie wysyłaj\nreturn null;\n",
         "outputs": 1,
         "timeout": 0,
         "noerr": 0,
