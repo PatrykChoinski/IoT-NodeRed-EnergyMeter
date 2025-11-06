@@ -284,6 +284,17 @@
         "contextStore": "memory"
     },
     {
+        "id": "3cac7464cf3471c6",
+        "type": "ui_group",
+        "name": "Chart Freq",
+        "tab": "60a216dac28b542d",
+        "order": 2,
+        "disp": true,
+        "width": 6,
+        "collapse": false,
+        "className": ""
+    },
+    {
         "id": "d9dc87ed006e3cf9",
         "type": "OpcUa-Client",
         "z": "16a9fef4be6ba735",
@@ -1268,7 +1279,7 @@
         "type": "ui_chart",
         "z": "16a9fef4be6ba735",
         "name": "",
-        "group": "dfe4a92c4000b3b4",
+        "group": "3cac7464cf3471c6",
         "order": 1,
         "width": 0,
         "height": 0,
