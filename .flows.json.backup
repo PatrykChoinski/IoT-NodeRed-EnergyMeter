@@ -193,7 +193,7 @@
         "tab": "ui-tab1",
         "order": 3,
         "disp": true,
-        "width": 6,
+        "width": "5",
         "collapse": false,
         "className": ""
     },
@@ -225,16 +225,6 @@
         "group": "8333d5ac10a88c5b",
         "order": 2,
         "width": 5,
-        "height": 1
-    },
-    {
-        "id": "e3d8a6cc55d6e86f",
-        "type": "ui_spacer",
-        "z": "16a9fef4be6ba735",
-        "name": "spacer",
-        "group": "87022eff1f39cbfe",
-        "order": 2,
-        "width": 1,
         "height": 1
     },
     {
@@ -282,6 +272,17 @@
         "type": "AnamicoAlarmPanel",
         "name": "AlarmEnergia",
         "contextStore": "memory"
+    },
+    {
+        "id": "3cac7464cf3471c6",
+        "type": "ui_group",
+        "name": "Frequency Chart ",
+        "tab": "60a216dac28b542d",
+        "order": 2,
+        "disp": true,
+        "width": "12",
+        "collapse": false,
+        "className": ""
     },
     {
         "id": "d9dc87ed006e3cf9",
@@ -402,8 +403,8 @@
         "name": "Voltage Gauge",
         "group": "8333d5ac10a88c5b",
         "order": 1,
-        "width": 0,
-        "height": 0,
+        "width": "5",
+        "height": "5",
         "gtype": "donut",
         "title": "Voltage",
         "label": "V",
@@ -473,7 +474,7 @@
         "interpolate": "linear",
         "nodata": "",
         "dot": true,
-        "ymin": "",
+        "ymin": "0",
         "ymax": "400",
         "removeOlder": 1,
         "removeOlderPoints": "",
@@ -890,8 +891,8 @@
         "targetType": "msg",
         "statusVal": "",
         "statusType": "auto",
-        "x": 840,
-        "y": 920,
+        "x": 880,
+        "y": 900,
         "wires": []
     },
     {
@@ -944,7 +945,8 @@
         "wires": [
             [
                 "c88dc6b11395d081",
-                "661bb6d67bc1414c"
+                "661bb6d67bc1414c",
+                "843509c6a09d3fa1"
             ]
         ]
     },
@@ -1102,7 +1104,7 @@
         "id": "5625d5362353f9c1",
         "type": "ui_text_input",
         "z": "16a9fef4be6ba735",
-        "name": "",
+        "name": "Zegar",
         "label": "",
         "tooltip": "",
         "group": "group1",
@@ -1116,7 +1118,7 @@
         "sendOnBlur": true,
         "className": "",
         "topicType": "msg",
-        "x": 860,
+        "x": 850,
         "y": 1160,
         "wires": [
             []
@@ -1228,7 +1230,7 @@
         "type": "function",
         "z": "16a9fef4be6ba735",
         "name": "Check Voltage",
-        "func": "let voltage = msg.payload;\n\n// Sprawdź, czy napięcie to liczba\nif (typeof voltage !== \"number\" || isNaN(voltage)) return null;\n\n// Zaokrąglij do 2 miejsc po przecinku\nvoltage = Number(voltage.toFixed(2));\n\n// Pobierz poprzedni stan alarmu (zapamiętany w kontekście)\nlet lastAlarm = context.get(\"lastAlarm\") || false;\nlet currentAlarm = voltage < 200;\n\n// Jeśli właśnie przechodzimy z \"brak alarmu\" -> \"alarm\", wyślij komunikat\nif (currentAlarm && !lastAlarm) {\n    msg.payload = `⚠️ ALARM: Napięcie spadło poniżej 200 V! (${voltage} V)`;\n    context.set(\"lastAlarm\", true);\n    return msg;\n}\n\n// Jeśli napięcie wróciło powyżej 200 V, zresetuj stan alarmu\nif (!currentAlarm && lastAlarm) {\n    context.set(\"lastAlarm\", false);\n}\n\n// W innym przypadku – nic nie wysyłaj\nreturn null;\n",
+        "func": "let voltage = msg.payload;\n\n// Sprawdź, czy napięcie to liczba\nif (typeof voltage !== \"number\" || isNaN(voltage)) return null;\n\n// Zaokrąglij do 2 miejsc po przecinku\nvoltage = Number(voltage.toFixed(2));\n\n// Pobierz poprzedni stan alarmu (zapamiętany w kontekście)\nlet lastAlarm = context.get(\"lastAlarm\") || false;\nlet currentAlarm = voltage < 200;\n\n// Jeśli właśnie przechodzimy z \"brak alarmu\" -> \"alarm\", wyślij komunikat\nif (currentAlarm && !lastAlarm) {\n    msg.payload = `⚠️ ALARM: Napięcie spadło poniżej 200 V!`;\n    context.set(\"lastAlarm\", true);\n    return msg;\n}\n\n// Jeśli napięcie wróciło powyżej 200 V, zresetuj stan alarmu\nif (!currentAlarm && lastAlarm) {\n    context.set(\"lastAlarm\", false);\n}\n\n// W innym przypadku – nic nie wysyłaj\nreturn null;\n",
         "outputs": 1,
         "timeout": "0",
         "noerr": 0,
@@ -1261,5 +1263,49 @@
         "x": 820,
         "y": 360,
         "wires": []
+    },
+    {
+        "id": "843509c6a09d3fa1",
+        "type": "ui_chart",
+        "z": "16a9fef4be6ba735",
+        "name": "",
+        "group": "3cac7464cf3471c6",
+        "order": 1,
+        "width": "0",
+        "height": "0",
+        "label": "Frequency Chart",
+        "chartType": "line",
+        "legend": "true",
+        "xformat": "HH:mm:ss",
+        "interpolate": "linear",
+        "nodata": "",
+        "dot": true,
+        "ymin": "0",
+        "ymax": "100",
+        "removeOlder": 1,
+        "removeOlderPoints": "",
+        "removeOlderUnit": "3600",
+        "cutout": 0,
+        "useOneColor": false,
+        "useUTC": false,
+        "colors": [
+            "#1f77b4",
+            "#aec7e8",
+            "#ff7f0e",
+            "#2ca02c",
+            "#98df8a",
+            "#d62728",
+            "#ff9896",
+            "#9467bd",
+            "#c5b0d5"
+        ],
+        "outputs": 1,
+        "useDifferentColor": false,
+        "className": "",
+        "x": 870,
+        "y": 960,
+        "wires": [
+            []
+        ]
     }
 ]
