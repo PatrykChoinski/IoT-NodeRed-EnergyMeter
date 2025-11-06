@@ -228,16 +228,6 @@
         "height": 1
     },
     {
-        "id": "e3d8a6cc55d6e86f",
-        "type": "ui_spacer",
-        "z": "16a9fef4be6ba735",
-        "name": "spacer",
-        "group": "87022eff1f39cbfe",
-        "order": 2,
-        "width": 1,
-        "height": 1
-    },
-    {
         "id": "eeb5c4464a408d74",
         "type": "ui_spacer",
         "z": "16a9fef4be6ba735",
