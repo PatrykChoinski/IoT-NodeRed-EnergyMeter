@@ -1102,7 +1102,7 @@
         "id": "5625d5362353f9c1",
         "type": "ui_text_input",
         "z": "16a9fef4be6ba735",
-        "name": "",
+        "name": "Zegar",
         "label": "",
         "tooltip": "",
         "group": "group1",
@@ -1116,7 +1116,7 @@
         "sendOnBlur": true,
         "className": "",
         "topicType": "msg",
-        "x": 860,
+        "x": 850,
         "y": 1160,
         "wires": [
             []
