@@ -890,8 +890,8 @@
         "targetType": "msg",
         "statusVal": "",
         "statusType": "auto",
-        "x": 840,
-        "y": 920,
+        "x": 880,
+        "y": 900,
         "wires": []
     },
     {
@@ -944,7 +944,8 @@
         "wires": [
             [
                 "c88dc6b11395d081",
-                "661bb6d67bc1414c"
+                "661bb6d67bc1414c",
+                "843509c6a09d3fa1"
             ]
         ]
     },
@@ -1261,5 +1262,49 @@
         "x": 820,
         "y": 360,
         "wires": []
+    },
+    {
+        "id": "843509c6a09d3fa1",
+        "type": "ui_chart",
+        "z": "16a9fef4be6ba735",
+        "name": "",
+        "group": "dfe4a92c4000b3b4",
+        "order": 1,
+        "width": 0,
+        "height": 0,
+        "label": "Frequency Chart",
+        "chartType": "line",
+        "legend": "true",
+        "xformat": "HH:mm:ss",
+        "interpolate": "linear",
+        "nodata": "",
+        "dot": true,
+        "ymin": "",
+        "ymax": "100",
+        "removeOlder": 1,
+        "removeOlderPoints": "",
+        "removeOlderUnit": "3600",
+        "cutout": 0,
+        "useOneColor": false,
+        "useUTC": false,
+        "colors": [
+            "#1f77b4",
+            "#aec7e8",
+            "#ff7f0e",
+            "#2ca02c",
+            "#98df8a",
+            "#d62728",
+            "#ff9896",
+            "#9467bd",
+            "#c5b0d5"
+        ],
+        "outputs": 1,
+        "useDifferentColor": false,
+        "className": "",
+        "x": 870,
+        "y": 960,
+        "wires": [
+            []
+        ]
     }
 ]
