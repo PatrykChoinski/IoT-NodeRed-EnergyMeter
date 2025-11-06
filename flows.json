@@ -286,7 +286,7 @@
     {
         "id": "3cac7464cf3471c6",
         "type": "ui_group",
-        "name": "Chart Freq",
+        "name": "Frequency Chart ",
         "tab": "60a216dac28b542d",
         "order": 2,
         "disp": true,
