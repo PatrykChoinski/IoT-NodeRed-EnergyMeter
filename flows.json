@@ -1275,7 +1275,7 @@
         "height": "0",
         "label": "Frequency Chart",
         "chartType": "line",
-        "legend": "true",
+        "legend": "false",
         "xformat": "HH:mm:ss",
         "interpolate": "linear",
         "nodata": "",
