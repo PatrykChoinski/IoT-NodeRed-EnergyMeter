@@ -1036,7 +1036,7 @@
         "type": "function",
         "z": "16a9fef4be6ba735",
         "name": "function 6",
-        "func": "msg.payload = Number(msg.payload.toFixed(2));;\nreturn msg;",
+        "func": "// Zakładamy, że z węzła OPC UA przychodzi obiekt o strukturze:\n// msg.payload.value.value = 230.5\n\nlet voltage = msg.payload?.value?.value;\n\n// Sprawdź, czy mamy dane\nif (voltage === undefined || voltage === null) {\n    node.warn(\"Brak wartości napięcia z OPC UA\");\n    return null;\n}\n\n// Opcjonalnie: zaokrąglenie do 2 miejsc po przecinku\nvoltage = Math.round(voltage * 100) / 100;\n\n// Przygotuj komunikat do następnego węzła\nmsg.payload = `Maksymalne napięcie: ${voltage} V`;\nmsg.voltage = voltage; // jeśli chcesz też surową wartość\nmsg.topic = \"VoltageMax\";\n\nreturn msg;\n",
         "outputs": 1,
         "timeout": 0,
         "noerr": 0,
