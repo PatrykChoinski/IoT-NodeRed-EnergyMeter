@@ -193,7 +193,7 @@
         "tab": "ui-tab1",
         "order": 3,
         "disp": true,
-        "width": 6,
+        "width": "5",
         "collapse": false,
         "className": ""
     },
