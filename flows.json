@@ -446,7 +446,7 @@
         "type": "debug",
         "z": "16a9fef4be6ba735",
         "name": "Debug OPC Data",
-        "active": false,
+        "active": true,
         "tosidebar": true,
         "console": false,
         "tostatus": false,
