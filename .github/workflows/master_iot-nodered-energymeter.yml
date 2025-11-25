@@ -1,4 +1,4 @@
-name: Build and deploy Node.js app to Azure Web App - IoT-NodeRed-EnergyMeter
+name: Build and deploy Node-RED app to Azure Web App - IoT-NodeRed-EnergyMeter
 
 on:
   push:
@@ -17,14 +17,17 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      - name: Set up Node.js version
+      - name: Set up Node.js
         uses: actions/setup-node@v3
         with:
           node-version: '20.x'
           cache: 'npm'
 
-      - name: Install dependencies
-        run: npm install --production
+
+      - name: Unpack artifact
+        run: |
+          tar -xzf node_modules.tar.gz
+          rm node_modules.tar.gz
 
       - name: Login to Azure
         uses: azure/login@v2
@@ -33,10 +36,10 @@ jobs:
           tenant-id: ${{ secrets.AZUREAPPSERVICE_TENANTID_CBCF5118567E4A80BEFFD0BFB26A26C3 }}
           subscription-id: ${{ secrets.AZUREAPPSERVICE_SUBSCRIPTIONID_5A9E875950664853B8367FC1DF5368A7 }}
 
+      # 🚀 Deployment z pominięciem builda po stronie Azure
       - name: Deploy to Azure Web App
         uses: azure/webapps-deploy@v3
         with:
           app-name: 'IoT-NodeRed-EnergyMeter'
           slot-name: 'Production'
           package: .
-          startup-command: "npm start"
